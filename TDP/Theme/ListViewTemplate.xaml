@@ -1,0 +1,307 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="ListViewItemContainerStyle1" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DCount}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DMass}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleType" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DTName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DTDName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DTNName}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleSize" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DSName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DSDName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DSNName}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleDefect" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFTName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFTPlace}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding FDTPlaceAll}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStylePlace" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFPName}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleDet" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding FDate, StringFormat='dd.MM.yyyy'}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding FName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding FSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding FMass}"></Run>
+                            </TextBlock>
+                           
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
+    <SolidColorBrush x:Key="ListBox.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ListBox.Static.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="ListBox.Disabled.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ListBox.Disabled.Border" Color="Transparent"/>
+    <Style x:Key="ListViewStyle1" TargetType="{x:Type ListView}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Foreground" Value="#FFf2f3f5"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="ScrollViewer.PanningMode" Value="Both"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListView}">
+                    <Border x:Name="Bd" Background="{TemplateBinding Background}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    Padding="1" 
+                                    SnapsToDevicePixels="true">
+                        <ScrollViewer Focusable="false" 
+                                              Padding="{TemplateBinding Padding}">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" 
+                                            TargetName="Bd" Value="{StaticResource ListBox.Disabled.Background}"/>
+                            <Setter Property="BorderBrush" 
+                                            TargetName="Bd" Value="{StaticResource ListBox.Disabled.Border}"/>
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsGrouping" 
+                                                   Value="true"/>
+                                <Condition Property="VirtualizingPanel.IsVirtualizingWhenGrouping" 
+                                                   Value="false"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="ScrollViewer.CanContentScroll" 
+                                            Value="false"/>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

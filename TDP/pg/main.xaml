@@ -1,0 +1,21 @@
+﻿<Page x:Class="TDP.pg.main" FontFamily="eurostile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TDP.pg"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="main">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="BNewDetail" Width="200" Height="200" FontFamily="eurostile extd medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="13" Content="Добавление деталей и &#xA;               размеров" Click="BNewDetail_Click"/>
+        <Button x:Name="BNewEntry" Width="200" Height="200" FontFamily="eurostile extd medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="13" Grid.Column="1" Content="Добавление новой&#xD;&#xA;              записи" Click="BNewEntry_Click"></Button>
+        <Button x:Name="BView" Width="200" Height="200" FontFamily="eurostile extd medium" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="13" Grid.Column="2" Content="Просмотр" Click="BView_Click"></Button> 
+    </Grid>
+</Page>

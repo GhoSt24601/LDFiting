@@ -1,0 +1,85 @@
+﻿<Page x:Class="TDP.pg.Sizes" FontFamily="eurostile" FontSize="16"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TDP.pg"
+      mc:Ignorable="d" 
+     d:DesignHeight="600" d:DesignWidth="1000" MouseDown="unvis">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="allstring"
+                   VerticalContentAlignment="Center"
+                   HorizontalContentAlignment="Center"
+                   Foreground="#FFf2f3f5"
+                   FontSize="20"
+                   Margin="0,6,0,0"
+                   HorizontalAlignment="Left"
+                   
+                   Grid.Column="0"></Label>
+            <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" 
+                  Style="{DynamicResource ComboBoxStyle1}" 
+                  x:Name="cbsort" 
+                  SelectionChanged="cbsorting" 
+                  DisplayMemberPath="DisplayName"  
+                  ItemsSource="{Binding ItemSorts}"  
+                  Width="190" 
+                  Height="40" 
+                      Margin="0,6,0,0"
+                  HorizontalAlignment="Center" 
+                      VerticalAlignment="Center"
+                  VerticalContentAlignment="Center" 
+                  HorizontalContentAlignment="Center" 
+                  Grid.Column="2"></ComboBox>
+            <RadioButton x:Name="newdetail" Style="{StaticResource NewGettysburg}" 
+                         Content="Добавить" 
+                         Grid.Column="3" 
+                         HorizontalAlignment="Right"
+                         Margin="0,6,0,0" Click="newdetail_Click"></RadioButton>
+        </Grid>
+        <Grid Margin="7,2,7,2" Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Border Grid.ColumnSpan="4" BorderThickness="1" Height="1" Margin="0,25,0,0" BorderBrush="#fff9f9f9"></Border>
+            <TextBlock Text="Размер"
+                       Style="{StaticResource TBlock}"></TextBlock>
+            <TextBlock Text="Размер в отправке"
+                       Grid.Column="1"
+                       Style="{StaticResource TBlock}"></TextBlock>
+            <TextBlock Text="Размер в отправке никель"
+                       Grid.Column="2"
+                       Style="{StaticResource TBlock}"></TextBlock>
+        </Grid>
+        <ListView Name="zerg" ItemContainerStyle="{DynamicResource ListViewItemContainerStyleSize}" Style="{DynamicResource ListViewStyle1}"
+                  
+                  HorizontalContentAlignment="Stretch"
+                  Grid.Row="2" 
+                  ItemsSource="{Binding sizesb}"
+                  HorizontalAlignment="Stretch">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                </DataTemplate>
+
+            </ListView.ItemTemplate>
+        </ListView>
+        <Frame x:Name="f4" IsHitTestVisible="True" Visibility="Visible" Width="370" Height="400" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,10,0" Grid.Row="2"></Frame>
+
+    </Grid>
+</Page>

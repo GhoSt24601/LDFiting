@@ -1,0 +1,40 @@
+﻿<Page x:Class="TDP.pg.EntryView" FontFamily="eurostile" FontSize="16"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TDP.pg"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" 
+                BorderBrush="#FF949ba4" 
+                Height="2" 
+                Margin="0,22,0,0">
+
+        </Border>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+            <RadioButton x:Name="RBForging" Content="Поковка" 
+                         Style="{StaticResource SPGray}" 
+                         Width="140" Height="24" Checked="RBForging_Checked" />
+            <RadioButton x:Name="RBSharping" Content="Расточка" 
+                         Style="{StaticResource SPGray}" 
+                         Width="160" Height="24" Checked="RBSharping_Checked" />
+            <RadioButton x:Name="RBLat" Content="Отправка латуни" 
+                         Style="{StaticResource SPGray}" 
+                         Width="200" Height="24" Checked="RBLat_Checked" />
+            <RadioButton x:Name="RBNik" Content="Отправка никеля" 
+                         Style="{StaticResource SPGray}" 
+                         Width="200" Height="24" Checked="RBNik_Checked" />
+            <RadioButton x:Name="RBDefect" Content="Дефекты" 
+                         Style="{StaticResource SPGray}" 
+                         Width="140" Height="24" Checked="RBDef_Checked" />
+        </StackPanel>
+        <Frame x:Name="f3" Grid.Row="1"></Frame>
+    </Grid>
+</Page>
