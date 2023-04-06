@@ -23,8 +23,7 @@
     <EntitySetMapping Name="DefectType">
       <EntityTypeMapping TypeName="Model.DefectType">
         <MappingFragment StoreEntitySet="DefectType">
-          <ScalarProperty Name="DFTName" ColumnName="DFTName" />
-          <ScalarProperty Name="DFTPlace" ColumnName="DFTPlace" />
+          <ScalarProperty Name="DFType" ColumnName="DFType" />
           <ScalarProperty Name="FDTPlaceAll" ColumnName="FDTPlaceAll" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -65,6 +64,7 @@
       <EntityTypeMapping TypeName="Model.ExportLat">
         <MappingFragment StoreEntitySet="ExportLat">
           <ScalarProperty Name="ELId" ColumnName="ELId" />
+          <ScalarProperty Name="ELDate" ColumnName="ELDate" />
           <ScalarProperty Name="ELName" ColumnName="ELName" />
           <ScalarProperty Name="ELSize" ColumnName="ELSize" />
           <ScalarProperty Name="ELCount" ColumnName="ELCount" />
@@ -78,6 +78,7 @@
       <EntityTypeMapping TypeName="Model.ExportNik">
         <MappingFragment StoreEntitySet="ExportNik">
           <ScalarProperty Name="ENId" ColumnName="ENId" />
+          <ScalarProperty Name="ENDate" ColumnName="ENDate" />
           <ScalarProperty Name="ENName" ColumnName="ENName" />
           <ScalarProperty Name="ENSize" ColumnName="ENSize" />
           <ScalarProperty Name="ENCount" ColumnName="ENCount" />

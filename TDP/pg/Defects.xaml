@@ -55,16 +55,14 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
-                <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Border Grid.ColumnSpan="4" BorderThickness="1" Height="1" Margin="0,25,0,0" BorderBrush="#fff9f9f9"></Border>
-            <TextBlock Text="Код дефекта"
-                       Style="{StaticResource TBlock}"></TextBlock>
+
             <TextBlock Text="Название дефекта"
-                       Grid.Column="1"
+                       Grid.Column="0"
                        Style="{StaticResource TBlock}"></TextBlock>
             <TextBlock Text="Место дефекта"
-                       Grid.Column="2"
+                       Grid.Column="1"
                        Style="{StaticResource TBlock}"></TextBlock>
         </Grid>
         <ListView Name="zerg" ItemContainerStyle="{DynamicResource ListViewItemContainerStyleDefect}" Style="{DynamicResource ListViewStyle1}"

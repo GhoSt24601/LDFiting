@@ -66,26 +66,25 @@ namespace TDP.pg
         {
             detailsb = new ObservableCollection<Detail>();
             connection.Detail.ToList().ForEach(detail => detailsb.Add(detail));
-            allstring.Content="Записей: "+detailsb.Count.ToString();
+            allstring.Content = "Записей: " + detailsb.Count.ToString();
             zerg.ItemsSource = detailsb;
         }
         public static ObservableCollection<Detail> detailsb { get; set; }
         pg.ND pgnd = new pg.ND();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            if (f4.NavigationService.Content == null)
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content==null)
             {
                 f4.Visibility = Visibility.Visible;
-                f4.Navigate(pgnd);
-            }
-            else if (f4.Visibility == Visibility.Hidden)
-            {
-                f4.Visibility = Visibility.Visible;
+                    pgnd = new pg.ND();
+                    f4.Navigate(pgnd);
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
+                pgnd = null;
                 updateDetails();
+                GC.Collect();
             }
         }
 
@@ -101,7 +100,9 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
+                        pgnd = null;
                         updateDetails();
+                        GC.Collect();
                     }
                 }
             }
@@ -109,7 +110,7 @@ namespace TDP.pg
 
         private void sel(object sender, RoutedEventArgs e)
         {
-            var kerr = (zerg.SelectedItem as Detail);
+           
         }
     }
 }

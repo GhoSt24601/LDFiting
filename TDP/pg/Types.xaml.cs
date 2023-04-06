@@ -20,6 +20,7 @@ using System.Data.Entity;
 using System.Data.SqlTypes;
 using TDP.Database;
 using System.Security.AccessControl;
+using System.Runtime.CompilerServices;
 
 namespace TDP.pg
 {
@@ -29,6 +30,7 @@ namespace TDP.pg
     public partial class Types : Page
     {
         Database.Entities connection = new Database.Entities();
+       
         public Types()
         {
             InitializeComponent();
@@ -59,30 +61,30 @@ namespace TDP.pg
             view.SortDescriptions.Clear();
             view.SortDescriptions.Add(new SortDescription(item.PropertyName, direction));
         }
-        public void updateDetails()
+        public DetailType updateDetails()
         {
             typesb = new ObservableCollection<DetailType>();
             connection.DetailType.ToList().ForEach(detail => typesb.Add(detail));
             allstring.Content = "Записей: " + typesb.Count.ToString();
             zerg.ItemsSource = typesb;
+            return typesb.Last();
         }
         public static ObservableCollection<DetailType> typesb { get; set; }
         pg.NDT pgndt = new pg.NDT();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            if (f4.NavigationService.Content == null)
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                f4.Navigate(pgndt);
-            }
-            else if (f4.Visibility == Visibility.Hidden)
-            {
-                f4.Visibility = Visibility.Visible;
+                    pgndt = new pg.NDT();
+                    f4.Navigate(pgndt);
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
+                pgndt = null;
                 updateDetails();
+                GC.Collect();
             }
         }
 
@@ -97,7 +99,9 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
+                        pgndt = null;
                         updateDetails();
+                        GC.Collect();
                     }
                 }
             }

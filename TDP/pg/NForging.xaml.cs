@@ -23,16 +23,13 @@ namespace TDP.pg
     public partial class NForging : Page
     {
         public static ObservableCollection<Database.DetailType> detailtypes { get; set; }
-        public static ObservableCollection<Database.DetailSize> detailsizes { get; set; }
+        public static ObservableCollection<Database.Detail> detailsizes { get; set; }
         public NForging()
         {
             InitializeComponent();
             detailtypes = new ObservableCollection<DetailType>();
-            detailsizes = new ObservableCollection<DetailSize>();
             conn.GetModel().DetailType.ToList().ForEach(detailtype => detailtypes.Add(detailtype));
-            conn.GetModel().DetailSize.ToList().ForEach(detailsize => detailsizes.Add(detailsize));
             CBDN.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailtypes });
-            CBDS.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailsizes });
             DataContext = this;
         }
 
@@ -70,6 +67,18 @@ namespace TDP.pg
                     CBDN.SelectedIndex = -1; CBDS.SelectedIndex = -1; TMass.Text = ""; detail = null;
             }
             else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
+
+        private void CBDN_SelectionChanged(object sender, EventArgs e)
+        {
+            if (detailsizes != null)
+            {
+                detailsizes = null;
+                GC.Collect();
+            }
+            detailsizes = new ObservableCollection<Detail>();
+                conn.GetModel().Detail.Where(q => q.DName == CBDN.Text).ToList().ForEach(detailsize => detailsizes.Add(detailsize));
+                CBDS.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailsizes });
         }
     }
 }

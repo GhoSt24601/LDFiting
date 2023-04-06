@@ -19,10 +19,9 @@
   </EntityType>
   <EntityType Name="DefectType">
     <Key>
-      <PropertyRef Name="DFTName" />
+      <PropertyRef Name="DFType" />
     </Key>
-    <Property Name="DFTName" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="DFTPlace" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DFType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FDTPlaceAll" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Detail">
@@ -60,6 +59,7 @@
       <PropertyRef Name="ELId" />
     </Key>
     <Property Name="ELId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ELDate" Type="date" Nullable="false" />
     <Property Name="ELName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ELSize" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ELCount" Type="int" Nullable="false" />
@@ -72,6 +72,7 @@
       <PropertyRef Name="ENId" />
     </Key>
     <Property Name="ENId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ENDate" Type="date" Nullable="false" />
     <Property Name="ENName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ENSize" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ENCount" Type="int" Nullable="false" />
@@ -109,12 +110,12 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_Defect_DefectType">
+  <Association Name="FK_Defect_DefectType1">
     <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
     <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DefectType">
-        <PropertyRef Name="DFTName" />
+        <PropertyRef Name="DFType" />
       </Principal>
       <Dependent Role="Defect">
         <PropertyRef Name="DFTName" />
@@ -270,7 +271,7 @@
     <EntitySet Name="Forging" EntityType="Self.Forging" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sharping" EntityType="Self.Sharping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
+    <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
       <End Role="DefectType" EntitySet="DefectType" />
       <End Role="Defect" EntitySet="Defect" />
     </AssociationSet>

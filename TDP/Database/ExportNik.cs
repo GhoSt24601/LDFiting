@@ -15,6 +15,7 @@ namespace TDP.Database
     public partial class ExportNik
     {
         public int ENId { get; set; }
+        public System.DateTime ENDate { get; set; }
         public string ENName { get; set; }
         public string ENSize { get; set; }
         public int ENCount { get; set; }

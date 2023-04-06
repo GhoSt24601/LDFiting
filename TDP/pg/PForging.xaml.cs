@@ -1,25 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
-using System.Data.Sql;
-using System.Data.SqlClient;
-using System.Data.Entity;
-using System.Data.SqlTypes;
 using TDP.Database;
-using System.Security.AccessControl;
 
 namespace TDP.pg
 {
@@ -45,12 +33,12 @@ namespace TDP.pg
         }
         public static ObservableCollection<ItemSort> ItemSorts { get; set; } = new ObservableCollection<ItemSort>()
         {
-                new ItemSort(){DisplayName="По типу", PropertyName="DName", Ascending=true},
-                new ItemSort(){DisplayName="По размеру", PropertyName="DSize", Ascending=true},
-                new ItemSort(){DisplayName="По дате ↑", PropertyName="DCount", Ascending=true},
-                new ItemSort(){DisplayName="По дате ↓", PropertyName="DCount", Ascending=false},
-                new ItemSort(){DisplayName="По массе ↑", PropertyName="DMass", Ascending=true},
-                new ItemSort(){DisplayName="По массе ↓", PropertyName="DMass", Ascending=false}
+                new ItemSort(){DisplayName="По типу", PropertyName="FName", Ascending=true},
+                new ItemSort(){DisplayName="По размеру", PropertyName="FSize", Ascending=true},
+                new ItemSort(){DisplayName="По дате ↑", PropertyName="FDate", Ascending=true},
+                new ItemSort(){DisplayName="По дате ↓", PropertyName="FDate", Ascending=false},
+                new ItemSort(){DisplayName="По массе ↑", PropertyName="FMass", Ascending=true},
+                new ItemSort(){DisplayName="По массе ↓", PropertyName="FMass", Ascending=false}
         };
         private void cbsorting(object sender, SelectionChangedEventArgs e)
         {
@@ -73,20 +61,19 @@ namespace TDP.pg
         pg.NForging pgf = new pg.NForging();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (f4.NavigationService.Content == null)
+
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                f4.Navigate(pgf);
-            }
-            else if (f4.Visibility == Visibility.Hidden)
-            {
-                f4.Visibility = Visibility.Visible;
+                    pgf = new pg.NForging();
+                    f4.Navigate(pgf);
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
+                pgf = null;
                 updateDetails();
+                GC.Collect();
             }
         }
 
@@ -101,7 +88,9 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
+                        pgf = null;
                         updateDetails();
+                        GC.Collect();
                     }
                 }
             }
@@ -109,7 +98,7 @@ namespace TDP.pg
 
         private void sel(object sender, RoutedEventArgs e)
         {
-            var kerr = (zerg.SelectedItem as Detail);
+            
         }
     }
 }

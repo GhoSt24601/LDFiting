@@ -49,19 +49,18 @@ namespace TDP.pg
         pg.NDFP pgndfp = new pg.NDFP();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            if (f4.NavigationService.Content == null)
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
+                pgndfp = new pg.NDFP();
                 f4.Navigate(pgndfp);
-            }
-            else if (f4.Visibility == Visibility.Hidden)
-            {
-                f4.Visibility = Visibility.Visible;
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
+                pgndfp = null;
                 updateDetails();
+                GC.Collect();
             }
 
         }
@@ -78,7 +77,9 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
+                        pgndfp = null;
                         updateDetails();
+                        GC.Collect();
                     }
                 }
             }

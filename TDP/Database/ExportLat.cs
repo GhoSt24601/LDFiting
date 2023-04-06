@@ -15,6 +15,7 @@ namespace TDP.Database
     public partial class ExportLat
     {
         public int ELId { get; set; }
+        public System.DateTime ELDate { get; set; }
         public string ELName { get; set; }
         public string ELSize { get; set; }
         public int ELCount { get; set; }

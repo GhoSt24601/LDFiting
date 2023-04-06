@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4b42e53b19da40bcb1887d5742443baf" Name="Diagram1">
-        <EntityTypeShape EntityType="Model.Defect" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DefectPlace" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DefectType" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Detail" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DetailSize" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DetailType" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+      <Diagram DiagramId="c2bd6893e8484ab28dfa01fd13625d1d" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Defect" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DefectPlace" Width="1.5" PointX="3.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DefectType" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Detail" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DetailSize" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DetailType" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.ExportLat" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.ExportNik" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Forging" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Sharping" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ExportNik" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Forging" Width="1.5" PointX="5.25" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sharping" Width="1.5" PointX="5.25" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK_Defect_DefectType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Defect_DefectType1" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Defect_Detail" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_DefectType_DefectPlace" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Detail_DetailSize" ManuallyRouted="false" />

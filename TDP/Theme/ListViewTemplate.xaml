@@ -31,6 +31,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
                     <Run Text="{Binding DMass}"></Run>
+                    <Run Text="г"></Run>
                             </TextBlock>
                         </Grid>
                     </Border>
@@ -141,19 +142,13 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
-                                <ColumnDefinition Width="4*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" 
+                            <TextBlock Grid.Column="0"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
-                    <Run Text="{Binding DFTName}"></Run>
+                    <Run Text="{Binding DFType}"></Run>
                             </TextBlock>
                             <TextBlock Grid.Column="1"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center">
-                    <Run Text="{Binding DFTPlace}"></Run>
-                            </TextBlock>
-                            <TextBlock Grid.Column="2"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
                     <Run Text="{Binding FDTPlaceAll}"></Run>
@@ -204,6 +199,56 @@
 
         </Style.Triggers>
     </Style>
+    <Style x:Key="ListViewItemContainerStyleDet2" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding SDate, StringFormat='dd.MM.yyyy'}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding SName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding SSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding SMass}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+
+        </Style.Triggers>
+    </Style>
     <Style x:Key="ListViewItemContainerStyleDet" TargetType="{x:Type ListViewItem}">
         <Setter Property="Template">
             <Setter.Value>
@@ -235,6 +280,7 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
                     <Run Text="{Binding FMass}"></Run>
+                    <Run Text="г"></Run>
                             </TextBlock>
                            
                         </Grid>
@@ -251,6 +297,192 @@
                 <Setter Property="Background" Value="#FF8a66ee"/>
             </Trigger>
 
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleExpLat" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELDate, StringFormat='dd.MM.yyyy'}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELCount}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELPMass}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELKMass}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="6"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ELKMassBrutto}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleExpNik" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENDate, StringFormat='dd.MM.yyyy'}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENCount}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENPMass}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENKMass}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="6"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding ENKMassBrutto}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleDef" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFDate, StringFormat='dd.MM.yyyy'}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFSize}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFTName}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFCount}"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
         </Style.Triggers>
     </Style>
     <SolidColorBrush x:Key="ListBox.Static.Background" Color="Transparent"/>

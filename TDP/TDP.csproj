@@ -218,14 +218,35 @@
     <Compile Include="Database\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="pg\explat.xaml.cs">
+      <DependentUpon>explat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\expnik.xaml.cs">
+      <DependentUpon>expnik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\NDefect.xaml.cs">
+      <DependentUpon>NDefect.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\nexplat.xaml.cs">
+      <DependentUpon>nexplat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\nexpnik.xaml.cs">
+      <DependentUpon>nexpnik.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pg\NForging.xaml.cs">
       <DependentUpon>NForging.xaml</DependentUpon>
     </Compile>
     <Compile Include="pg\NSharping.xaml.cs">
       <DependentUpon>NSharping.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pg\pdefect.xaml.cs">
+      <DependentUpon>pdefect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pg\PForging.xaml.cs">
       <DependentUpon>PForging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\PSharping.xaml.cs">
+      <DependentUpon>PSharping.xaml</DependentUpon>
     </Compile>
     <Compile Include="temp.cs" />
     <Page Include="MainWindow.xaml">
@@ -261,11 +282,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pg\explat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\expnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\NDefect.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\nexplat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\nexpnik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pg\NForging.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pg\NSharping.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\pdefect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -278,6 +323,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pg\NDFT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\PSharping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -425,6 +474,17 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Eurostile Extended-Black Italic.otf" />
+    <Resource Include="Eurostile Extended-Black.otf" />
+    <Resource Include="Eurostile Extended-Medium.otf" />
+    <Resource Include="Eurostile Extended-Regular Italic.otf" />
+    <Resource Include="Eurostile Extended-Regular.otf" />
+    <Resource Include="Eurostile-Bold Oblique.otf" />
+    <Resource Include="Eurostile-Bold.otf" />
+    <Resource Include="Eurostile-Medium.otf" />
+    <Resource Include="Eurostile-Regular Oblique.otf" />
+    <Resource Include="Eurostile-Regular.otf" />
+    <Resource Include="FontStarCraft2.ttf" />
     <EntityDeploy Include="Database\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

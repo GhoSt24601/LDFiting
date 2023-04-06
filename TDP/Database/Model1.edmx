@@ -24,10 +24,9 @@
         </EntityType>
         <EntityType Name="DefectType">
           <Key>
-            <PropertyRef Name="DFTName" />
+            <PropertyRef Name="DFType" />
           </Key>
-          <Property Name="DFTName" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DFTPlace" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DFType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FDTPlaceAll" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Detail">
@@ -65,6 +64,7 @@
             <PropertyRef Name="ELId" />
           </Key>
           <Property Name="ELId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ELDate" Type="date" Nullable="false" />
           <Property Name="ELName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ELSize" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ELCount" Type="int" Nullable="false" />
@@ -77,6 +77,7 @@
             <PropertyRef Name="ENId" />
           </Key>
           <Property Name="ENId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ENDate" Type="date" Nullable="false" />
           <Property Name="ENName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ENSize" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ENCount" Type="int" Nullable="false" />
@@ -114,12 +115,12 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Defect_DefectType">
+        <Association Name="FK_Defect_DefectType1">
           <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
           <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DefectType">
-              <PropertyRef Name="DFTName" />
+              <PropertyRef Name="DFType" />
             </Principal>
             <Dependent Role="Defect">
               <PropertyRef Name="DFTName" />
@@ -275,7 +276,7 @@
           <EntitySet Name="Forging" EntityType="Self.Forging" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sharping" EntityType="Self.Sharping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
+          <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
             <End Role="DefectType" EntitySet="DefectType" />
             <End Role="Defect" EntitySet="Defect" />
           </AssociationSet>
@@ -327,7 +328,7 @@
           <Property Name="DFTName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DFSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DFCount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DefectType" Relationship="Self.FK_Defect_DefectType" FromRole="Defect" ToRole="DefectType" />
+          <NavigationProperty Name="DefectType" Relationship="Self.FK_Defect_DefectType1" FromRole="Defect" ToRole="DefectType" />
           <NavigationProperty Name="Detail" Relationship="Self.FK_Defect_Detail" FromRole="Defect" ToRole="Detail" />
         </EntityType>
         <EntityType Name="DefectPlace">
@@ -339,12 +340,11 @@
         </EntityType>
         <EntityType Name="DefectType">
           <Key>
-            <PropertyRef Name="DFTName" />
+            <PropertyRef Name="DFType" />
           </Key>
-          <Property Name="DFTName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DFTPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DFType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FDTPlaceAll" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_DefectType" FromRole="DefectType" ToRole="Defect" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_DefectType1" FromRole="DefectType" ToRole="Defect" />
           <NavigationProperty Name="DefectPlace" Relationship="Self.FK_DefectType_DefectPlace" FromRole="DefectType" ToRole="DefectPlace" />
         </EntityType>
         <EntityType Name="Detail">
@@ -391,6 +391,7 @@
             <PropertyRef Name="ELId" />
           </Key>
           <Property Name="ELId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ELDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ELName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ELSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ELCount" Type="Int32" Nullable="false" />
@@ -404,6 +405,7 @@
             <PropertyRef Name="ENId" />
           </Key>
           <Property Name="ENId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ENDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ENName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ENSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ENCount" Type="Int32" Nullable="false" />
@@ -444,12 +446,12 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Defect_DefectType">
+        <Association Name="FK_Defect_DefectType1">
           <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
           <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DefectType">
-              <PropertyRef Name="DFTName" />
+              <PropertyRef Name="DFType" />
             </Principal>
             <Dependent Role="Defect">
               <PropertyRef Name="DFTName" />
@@ -574,7 +576,7 @@
           <EntitySet Name="Forging" EntityType="Self.Forging" />
           <EntitySet Name="Sharping" EntityType="Self.Sharping" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
+          <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
             <End Role="DefectType" EntitySet="DefectType" />
             <End Role="Defect" EntitySet="Defect" />
           </AssociationSet>
@@ -680,8 +682,7 @@
           <EntitySetMapping Name="DefectType">
             <EntityTypeMapping TypeName="Model.DefectType">
               <MappingFragment StoreEntitySet="DefectType">
-                <ScalarProperty Name="DFTName" ColumnName="DFTName" />
-                <ScalarProperty Name="DFTPlace" ColumnName="DFTPlace" />
+                <ScalarProperty Name="DFType" ColumnName="DFType" />
                 <ScalarProperty Name="FDTPlaceAll" ColumnName="FDTPlaceAll" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -722,6 +723,7 @@
             <EntityTypeMapping TypeName="Model.ExportLat">
               <MappingFragment StoreEntitySet="ExportLat">
                 <ScalarProperty Name="ELId" ColumnName="ELId" />
+                <ScalarProperty Name="ELDate" ColumnName="ELDate" />
                 <ScalarProperty Name="ELName" ColumnName="ELName" />
                 <ScalarProperty Name="ELSize" ColumnName="ELSize" />
                 <ScalarProperty Name="ELCount" ColumnName="ELCount" />
@@ -735,6 +737,7 @@
             <EntityTypeMapping TypeName="Model.ExportNik">
               <MappingFragment StoreEntitySet="ExportNik">
                 <ScalarProperty Name="ENId" ColumnName="ENId" />
+                <ScalarProperty Name="ENDate" ColumnName="ENDate" />
                 <ScalarProperty Name="ENName" ColumnName="ENName" />
                 <ScalarProperty Name="ENSize" ColumnName="ENSize" />
                 <ScalarProperty Name="ENCount" ColumnName="ENCount" />

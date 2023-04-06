@@ -27,10 +27,10 @@ namespace TDP.pg
 
         }
         pg.PForging pgd = new pg.PForging();
-        pg.Types pgt = new pg.Types();
-        pg.Sizes pgs = new pg.Sizes();
-        pg.Defects pgdf = new pg.Defects();
-        pg.DefectPlaces pgdp = new pg.DefectPlaces();
+        pg.PSharping pgs = new pg.PSharping();
+        pg.explat pgel = new pg.explat();
+        pg.expnik pgen = new pg.expnik();
+        pg.pdefect pgdp = new pg.pdefect();
         private void RBForging_Checked(object sender, RoutedEventArgs e)
         {
             f3.Navigate(pgd);
@@ -38,17 +38,17 @@ namespace TDP.pg
 
         private void RBSharping_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgt);
+            f3.Navigate(pgs);
         }
 
         private void RBLat_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgs);
+            f3.Navigate(pgel);
         }
 
         private void RBNik_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgdf);
+            f3.Navigate(pgen);
         }
         private void RBDef_Checked(object sender, RoutedEventArgs e)
         {

@@ -38,30 +38,27 @@ namespace TDP.pg
 
         public Database.DefectType detail { get; set; }
         public string NameDet;
-        public string DefectCode;
         public string DefectName;
         private void Badd_Click(object sender, RoutedEventArgs e)
         {
-            DefectCode = defectCode.Text.Trim();
             DefectName = defectName.Text.Trim();
 
-            if (CBDA.SelectedIndex > -1 && DefectCode.Length != 0 && DefectName.Length != 0)
+            if (CBDA.SelectedIndex > -1 && DefectName.Length != 0)
             {
 
                 NameDet = CBDA.Text.ToString();
                 
 
-                var SK = conn.GetModel().DefectType.Where(x => x.DFTName == DefectCode).FirstOrDefault();
+                var SK = conn.GetModel().DefectType.Where(x => x.DFType == DefectName).FirstOrDefault();
                 if (SK == null)
                 {
                     detail = new Database.DefectType();
-                    detail.DFTName = DefectCode;
-                    detail.DFTPlace = DefectName;
+                    detail.DFType = DefectName;
                     detail.FDTPlaceAll = NameDet;
                     conn.GetModel().DefectType.Add(detail);
                     conn.GetModel().SaveChanges();
                     LMessage.Content = "Данные сохранены"; LMessage.Foreground = new SolidColorBrush(Colors.White);
-                    CBDA.SelectedIndex = -1; defectName.Text = ""; defectCode.Text = ""; detail = null;
+                    CBDA.SelectedIndex = -1; defectName.Text = ""; detail = null;
                 }
                 else { LMessage.Content = "Строка с такими данными уже существует"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
             }

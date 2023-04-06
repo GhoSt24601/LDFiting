@@ -45,8 +45,7 @@ namespace TDP.pg
         }
         public static ObservableCollection<ItemSort> ItemSorts { get; set; } = new ObservableCollection<ItemSort>()
         {
-                new ItemSort(){DisplayName="По коду", PropertyName="DFTName", Ascending=true},
-                new ItemSort(){DisplayName="По названию", PropertyName="DFTPlace", Ascending=true},
+                new ItemSort(){DisplayName="По названию", PropertyName="DFType", Ascending=true},
                 new ItemSort(){DisplayName="По месту дефекта", PropertyName="FDTPlaceAll", Ascending=true}
         };
         private void cbsorting(object sender, SelectionChangedEventArgs e)
@@ -70,19 +69,18 @@ namespace TDP.pg
         pg.NDFT pgndft = new pg.NDFT();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            if (f4.NavigationService.Content == null)
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
+                pgndft = new pg.NDFT();
                 f4.Navigate(pgndft);
-            }
-            else if (f4.Visibility == Visibility.Hidden)
-            {
-                f4.Visibility = Visibility.Visible;
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
+                pgndft = null;
                 updateDetails();
+                GC.Collect();
             }
 
         }
@@ -98,7 +96,9 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
+                        pgndft = null;
                         updateDetails();
+                        GC.Collect();
                     }
                 }
             }

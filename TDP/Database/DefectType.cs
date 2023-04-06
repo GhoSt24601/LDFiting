@@ -20,8 +20,7 @@ namespace TDP.Database
             this.Defect = new HashSet<Defect>();
         }
     
-        public string DFTName { get; set; }
-        public string DFTPlace { get; set; }
+        public string DFType { get; set; }
         public string FDTPlaceAll { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

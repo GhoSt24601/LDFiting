@@ -30,7 +30,6 @@ namespace TDP.pg
             InitializeComponent();
             DataContext = this;
         }
-
         public Database.DetailType detail { get; set; }
         public string NameDet1;
         public string NameDet2;

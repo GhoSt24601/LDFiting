@@ -31,15 +31,18 @@ namespace TDP.pg
         public ND()
         {
             InitializeComponent();
+            updateCombobox();
+            DataContext = this;
+        }
+        public void updateCombobox()
+        {
             detailtypes = new ObservableCollection<DetailType>();
             detailsizes = new ObservableCollection<DetailSize>();
             conn.GetModel().DetailType.ToList().ForEach(detailtype => detailtypes.Add(detailtype));
             conn.GetModel().DetailSize.ToList().ForEach(detailsize => detailsizes.Add(detailsize));
             CBDN.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailtypes });
             CBDS.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailsizes });
-            DataContext = this;
         }
-
         public Database.Detail detail { get; set; }
         public string NameDet;
         public string SizeDet;
