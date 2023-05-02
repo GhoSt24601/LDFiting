@@ -28,7 +28,6 @@ namespace TDP.pg
     /// </summary>
     public partial class details : Page
     {
-        Database.Entities connection = new Database.Entities();
         public details()
         {
             InitializeComponent();
@@ -65,7 +64,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             detailsb = new ObservableCollection<Detail>();
-            connection.Detail.ToList().ForEach(detail => detailsb.Add(detail));
+            conn.GetModel().Detail.ToList().ForEach(detail => detailsb.Add(detail));
             allstring.Content = "Записей: " + detailsb.Count.ToString();
             zerg.ItemsSource = detailsb;
         }

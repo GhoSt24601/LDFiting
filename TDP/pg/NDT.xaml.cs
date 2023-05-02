@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Net.Configuration;
 using System.Runtime.Remoting.Contexts;
+using System.Data.Entity.Migrations;
 
 namespace TDP.pg
 {
@@ -25,16 +26,37 @@ namespace TDP.pg
     /// </summary>
     public partial class NDT : Page
     {
-        public NDT()
+        public NDT(DetailType detail)
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = detail;
+            if(detail != null ) { Badd.Content = "Изменить"; Name1.IsEnabled = false; }
         }
         public Database.DetailType detail { get; set; }
         public string NameDet1;
         public string NameDet2;
         public string NameDet3;
-        private void Badd_Click(object sender, RoutedEventArgs e)
+        private void Edit() 
+        {
+            NameDet2 = Name2.Text.Trim();
+            NameDet3 = Name3.Text.Trim();
+            if (NameDet2.Length != 0 && NameDet3.Length != 0)
+            {
+                var SK = conn.GetModel().DetailType.Where(x => x.DTName == Name1.Text).FirstOrDefault();
+                if (SK != null)
+                {
+                    SK.DTDName = NameDet2;
+                    SK.DTNName = NameDet3;
+
+                    conn.GetModel().DetailType.AddOrUpdate(SK);
+                    conn.GetModel().SaveChanges();
+                    LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
+                }
+                else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+            }
+            else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
+        private void New()
         {
             NameDet1 = Name1.Text.Trim();
             NameDet2 = Name2.Text.Trim();
@@ -57,6 +79,17 @@ namespace TDP.pg
                 else { LMessage.Content = "Строка с такими данными уже существует"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
             }
             else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
+        private void Badd_Click(object sender, RoutedEventArgs e)
+        {
+            if (Badd.Content!="Изменить")
+            { 
+                New(); 
+            }
+            else 
+            { 
+                Edit();
+            }
         }
     }
 }

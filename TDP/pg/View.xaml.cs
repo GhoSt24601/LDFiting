@@ -34,33 +34,29 @@ namespace TDP.pg
             DataContext= this;
            
         }
-        pg.details pgd = new pg.details(); 
-        pg.Types pgt = new pg.Types(); 
-        pg.Sizes pgs = new pg.Sizes(); 
-        pg.Defects pgdf = new pg.Defects(); 
-        pg.DefectPlaces pgdp = new pg.DefectPlaces(); 
+        
         private void RBDetails_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgd);
+            f3.Navigate(new pg.details());
         }
 
         private void RBTypes_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgt);
+            f3.Navigate(new pg.Types());
         }
 
         private void RBSizes_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgs);
+            f3.Navigate(new pg.Sizes());
         }
 
         private void RBDefects_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgdf);
+            f3.Navigate(new pg.Defects());
         }
         private void RBDefectPlaces_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgdp);
+            f3.Navigate(new pg.DefectPlaces());
         }
     }
 }

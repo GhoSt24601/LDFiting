@@ -184,3 +184,9 @@ C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\expnik.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\nexplat.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\nexpnik.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\pdefect.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\DetView.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\DetView.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VForging.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VForging.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\fview.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\fview.baml

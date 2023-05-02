@@ -23,7 +23,6 @@ namespace TDP.pg
     /// </summary>
     public partial class PSharping : Page
     {
-        Database.Entities connection = new Database.Entities();
         public PSharping()
         {
             InitializeComponent();
@@ -60,7 +59,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             sharpingb = new ObservableCollection<Sharping>();
-            connection.Sharping.ToList().ForEach(detail => sharpingb.Add(detail));
+            conn.GetModel().Sharping.ToList().ForEach(detail => sharpingb.Add(detail));
             allstring.Content = "Записей: " + sharpingb.Count.ToString();
             zerg.ItemsSource = sharpingb;
         }

@@ -16,7 +16,6 @@ namespace TDP.pg
     /// </summary>
     public partial class PForging : Page
     {
-        Database.Entities connection = new Database.Entities();
         public PForging()
         {
             InitializeComponent();
@@ -53,7 +52,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             forgingb = new ObservableCollection<Forging>();
-            connection.Forging.ToList().ForEach(detail => forgingb.Add(detail));
+            conn.GetModel().Forging.ToList().ForEach(detail => forgingb.Add(detail));
             allstring.Content = "Записей: " + forgingb.Count.ToString();
             zerg.ItemsSource = forgingb;
         }

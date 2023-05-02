@@ -42,12 +42,19 @@ namespace TDP
 
         private void BFull_Click(object sender, RoutedEventArgs e)
         {
-
+            if (WindowState != WindowState.Maximized)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else 
+            { 
+                WindowState = WindowState.Normal; 
+            }
         }
 
         private void BMin_Click(object sender, RoutedEventArgs e)
         {
-
+                WindowState = WindowState.Minimized;
         }
         public bool isWiden;
         private void Rectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -74,20 +81,18 @@ namespace TDP
                 if (newHeight > 0) this.Height = newHeight;
             }
         }
-
+       
         private void RBView_Checked(object sender, RoutedEventArgs e)
         {
-
+            f1.Navigate(new pg.fview());
         }
-        pg.EntryView pgev = new pg.EntryView();
         private void RBNewStroke_Checked(object sender, RoutedEventArgs e)
         {
-            f1.Navigate(pgev);
+            f1.Navigate(new pg.EntryView());
         }
-        pg.View pgv = new pg.View();
         private void RBNewDetail_Checked(object sender, RoutedEventArgs e)
         {
-            f1.Navigate(pgv);
+            f1.Navigate(new pg.View());
         }
     }
 }

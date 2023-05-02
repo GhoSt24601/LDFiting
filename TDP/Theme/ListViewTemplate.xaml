@@ -282,7 +282,7 @@
                     <Run Text="{Binding FMass}"></Run>
                     <Run Text="г"></Run>
                             </TextBlock>
-                           
+
                         </Grid>
                     </Border>
                 </ControlTemplate>
@@ -433,6 +433,68 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="ListViewItemContainerStyleViewForging" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Name}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Size}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MaxMass}"></Run>
+                            <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MinMass}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Raznost}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MedMass}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="ListViewItemContainerStyleDef" TargetType="{x:Type ListViewItem}">
         <Setter Property="Template">
             <Setter.Value>
@@ -535,5 +597,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
 </ResourceDictionary>

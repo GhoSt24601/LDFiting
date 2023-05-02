@@ -29,7 +29,6 @@ namespace TDP.pg
     /// </summary>
     public partial class Types : Page
     {
-        Database.Entities connection = new Database.Entities();
        
         public Types()
         {
@@ -61,30 +60,25 @@ namespace TDP.pg
             view.SortDescriptions.Clear();
             view.SortDescriptions.Add(new SortDescription(item.PropertyName, direction));
         }
-        public DetailType updateDetails()
+        public void updateDetails()
         {
             typesb = new ObservableCollection<DetailType>();
-            connection.DetailType.ToList().ForEach(detail => typesb.Add(detail));
+            conn.GetModel().DetailType.ToList().ForEach(detail => typesb.Add(detail));
             allstring.Content = "Записей: " + typesb.Count.ToString();
             zerg.ItemsSource = typesb;
-            return typesb.Last();
         }
         public static ObservableCollection<DetailType> typesb { get; set; }
-        pg.NDT pgndt = new pg.NDT();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
             if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                    pgndt = new pg.NDT();
-                    f4.Navigate(pgndt);
+                    f4.Navigate(new pg.NDT(null));
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
-                pgndt = null;
                 updateDetails();
-                GC.Collect();
             }
         }
 
@@ -99,13 +93,17 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
-                        pgndt = null;
                         updateDetails();
-                        GC.Collect();
                     }
                 }
             }
         }
 
+        private void sel(object sender, MouseButtonEventArgs e)
+        {
+            var selectedDetail = zerg.SelectedItem as DetailType;
+            f4.Visibility = Visibility.Visible;
+            f4.Navigate(new pg.NDT(selectedDetail));
+        }
     }
 }

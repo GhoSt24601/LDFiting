@@ -23,7 +23,6 @@ namespace TDP.pg
     /// </summary>
     public partial class explat : Page
     {
-        Database.Entities connection = new Database.Entities();
         public explat()
         {
             InitializeComponent();
@@ -60,7 +59,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             exportlatb = new ObservableCollection<ExportLat>();
-            connection.ExportLat.ToList().ForEach(detail => exportlatb.Add(detail));
+            conn.GetModel().ExportLat.ToList().ForEach(detail => exportlatb.Add(detail));
             allstring.Content = "Записей: " + exportlatb.Count.ToString();
             zerg.ItemsSource = exportlatb;
         }

@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Defect">
+    <Key>
+      <PropertyRef Name="DFId" />
+    </Key>
+    <Property Name="DFId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DFDate" Type="date" Nullable="false" />
+    <Property Name="DFName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DFTName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DFSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DFCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DefectPlace">
+    <Key>
+      <PropertyRef Name="DFPName" />
+    </Key>
+    <Property Name="DFPName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DefectType">
+    <Key>
+      <PropertyRef Name="DFType" />
+    </Key>
+    <Property Name="DFType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FDTPlaceAll" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detail">
+    <Key>
+      <PropertyRef Name="DName" />
+      <PropertyRef Name="DSize" />
+    </Key>
+    <Property Name="DName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DDName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DDSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DDDName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DDDSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DCount" Type="int" Nullable="false" />
+    <Property Name="DMass" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailSize">
+    <Key>
+      <PropertyRef Name="DSName" />
+    </Key>
+    <Property Name="DSName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DSDName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DSNName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetailType">
+    <Key>
+      <PropertyRef Name="DTName" />
+    </Key>
+    <Property Name="DTName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DTDName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DTNName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExportLat">
+    <Key>
+      <PropertyRef Name="ELId" />
+    </Key>
+    <Property Name="ELId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ELDate" Type="date" Nullable="false" />
+    <Property Name="ELName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ELSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ELCount" Type="int" Nullable="false" />
+    <Property Name="ELPMass" Type="float" Nullable="false" />
+    <Property Name="ELKMass" Type="float" Nullable="false" />
+    <Property Name="ELKMassBrutto" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ExportNik">
+    <Key>
+      <PropertyRef Name="ENId" />
+    </Key>
+    <Property Name="ENId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ENDate" Type="date" Nullable="false" />
+    <Property Name="ENName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ENSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ENCount" Type="int" Nullable="false" />
+    <Property Name="ENPMass" Type="float" Nullable="false" />
+    <Property Name="ENKMass" Type="float" Nullable="false" />
+    <Property Name="ENKMassBrutto" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Forging">
+    <Key>
+      <PropertyRef Name="FId" />
+    </Key>
+    <Property Name="FId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FDate" Type="date" Nullable="false" />
+    <Property Name="FName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FMass" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sharping">
+    <Key>
+      <PropertyRef Name="SId" />
+    </Key>
+    <Property Name="SId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SDate" Type="date" Nullable="false" />
+    <Property Name="SName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SSize" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SMass" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Defect_DefectType1">
+    <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
+    <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DefectType">
+        <PropertyRef Name="DFType" />
+      </Principal>
+      <Dependent Role="Defect">
+        <PropertyRef Name="DFTName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Defect_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="DName" />
+        <PropertyRef Name="DSize" />
+      </Principal>
+      <Dependent Role="Defect">
+        <PropertyRef Name="DFName" />
+        <PropertyRef Name="DFSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DefectType_DefectPlace">
+    <End Role="DefectPlace" Type="Self.DefectPlace" Multiplicity="1" />
+    <End Role="DefectType" Type="Self.DefectType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DefectPlace">
+        <PropertyRef Name="DFPName" />
+      </Principal>
+      <Dependent Role="DefectType">
+        <PropertyRef Name="FDTPlaceAll" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_DetailSize">
+    <End Role="DetailSize" Type="Self.DetailSize" Multiplicity="1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetailSize">
+        <PropertyRef Name="DSName" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="DSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_DetailType">
+    <End Role="DetailType" Type="Self.DetailType" Multiplicity="1" />
+    <End Role="Detail" Type="Self.Detail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DetailType">
+        <PropertyRef Name="DTName" />
+      </Principal>
+      <Dependent Role="Detail">
+        <PropertyRef Name="DName" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportLat_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="ExportLat" Type="Self.ExportLat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="DName" />
+        <PropertyRef Name="DSize" />
+      </Principal>
+      <Dependent Role="ExportLat">
+        <PropertyRef Name="ELName" />
+        <PropertyRef Name="ELSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExportNik_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="ExportNik" Type="Self.ExportNik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="DName" />
+        <PropertyRef Name="DSize" />
+      </Principal>
+      <Dependent Role="ExportNik">
+        <PropertyRef Name="ENName" />
+        <PropertyRef Name="ENSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Forging_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="Forging" Type="Self.Forging" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="DName" />
+        <PropertyRef Name="DSize" />
+      </Principal>
+      <Dependent Role="Forging">
+        <PropertyRef Name="FName" />
+        <PropertyRef Name="FSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sharping_Detail">
+    <End Role="Detail" Type="Self.Detail" Multiplicity="1" />
+    <End Role="Sharping" Type="Self.Sharping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detail">
+        <PropertyRef Name="DName" />
+        <PropertyRef Name="DSize" />
+      </Principal>
+      <Dependent Role="Sharping">
+        <PropertyRef Name="SName" />
+        <PropertyRef Name="SSize" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище ModelContainer">
+    <EntitySet Name="Defect" EntityType="Self.Defect" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefectPlace" EntityType="Self.DefectPlace" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DefectType" EntityType="Self.DefectType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detail" EntityType="Self.Detail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailSize" EntityType="Self.DetailSize" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetailType" EntityType="Self.DetailType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportLat" EntityType="Self.ExportLat" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExportNik" EntityType="Self.ExportNik" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Forging" EntityType="Self.Forging" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sharping" EntityType="Self.Sharping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
+      <End Role="DefectType" EntitySet="DefectType" />
+      <End Role="Defect" EntitySet="Defect" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Defect_Detail" Association="Self.FK_Defect_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="Defect" EntitySet="Defect" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DefectType_DefectPlace" Association="Self.FK_DefectType_DefectPlace">
+      <End Role="DefectPlace" EntitySet="DefectPlace" />
+      <End Role="DefectType" EntitySet="DefectType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_DetailSize" Association="Self.FK_Detail_DetailSize">
+      <End Role="DetailSize" EntitySet="DetailSize" />
+      <End Role="Detail" EntitySet="Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_DetailType" Association="Self.FK_Detail_DetailType">
+      <End Role="DetailType" EntitySet="DetailType" />
+      <End Role="Detail" EntitySet="Detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportLat_Detail" Association="Self.FK_ExportLat_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="ExportLat" EntitySet="ExportLat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExportNik_Detail" Association="Self.FK_ExportNik_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="ExportNik" EntitySet="ExportNik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Forging_Detail" Association="Self.FK_Forging_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="Forging" EntitySet="Forging" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sharping_Detail" Association="Self.FK_Sharping_Detail">
+      <End Role="Detail" EntitySet="Detail" />
+      <End Role="Sharping" EntitySet="Sharping" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

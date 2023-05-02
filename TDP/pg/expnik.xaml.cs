@@ -23,7 +23,6 @@ namespace TDP.pg
     /// </summary>
     public partial class expnik : Page
     {
-        Database.Entities connection = new Database.Entities();
         public expnik()
         {
             InitializeComponent();
@@ -60,7 +59,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             exportnikb = new ObservableCollection<ExportNik>();
-            connection.ExportNik.ToList().ForEach(detail => exportnikb.Add(detail));
+            conn.GetModel().ExportNik.ToList().ForEach(detail => exportnikb.Add(detail));
             allstring.Content = "Записей: " + exportnikb.Count.ToString();
             zerg.ItemsSource = exportnikb;
         }

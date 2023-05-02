@@ -31,7 +31,7 @@ namespace TDP.pg
         }
         private void BNewDetailType_Click(object sender, RoutedEventArgs e)
         {
-            f2.Navigate(new pg.NDT());
+            f2.Navigate(new pg.NDT(null));
         }
         private void BNewDetailSize_Click(object sender, RoutedEventArgs e)
         {

@@ -27,7 +27,6 @@ namespace TDP.pg
     /// </summary>
     public partial class Sizes : Page
     {
-        Database.Entities connection = new Database.Entities();
         public Sizes()
         {
             InitializeComponent();
@@ -61,7 +60,7 @@ namespace TDP.pg
         public void updateDetails()
         {
             sizesb = new ObservableCollection<DetailSize>();
-            connection.DetailSize.ToList().ForEach(detail => sizesb.Add(detail));
+            conn.GetModel().DetailSize.ToList().ForEach(detail => sizesb.Add(detail));
             allstring.Content = "Записей: " + sizesb.Count.ToString();
             zerg.ItemsSource = sizesb;
         }
