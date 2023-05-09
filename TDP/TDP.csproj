@@ -212,14 +212,11 @@
     <Compile Include="Database\Sharping.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Database\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
     <Compile Include="Database\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="editordel.xaml.cs">
+      <DependentUpon>editordel.xaml</DependentUpon>
     </Compile>
     <Compile Include="pg\DetView.xaml.cs">
       <DependentUpon>DetView.xaml</DependentUpon>
@@ -257,10 +254,26 @@
     <Compile Include="pg\PSharping.xaml.cs">
       <DependentUpon>PSharping.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pg\VBrak.xaml.cs">
+      <DependentUpon>VBrak.xaml</DependentUpon>
+    </Compile>
     <Compile Include="pg\VForging.xaml.cs">
       <DependentUpon>VForging.xaml</DependentUpon>
     </Compile>
+    <Compile Include="pg\VLat.xaml.cs">
+      <DependentUpon>VLat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\VNik.xaml.cs">
+      <DependentUpon>VNik.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="pg\VSharping.xaml.cs">
+      <DependentUpon>VSharping.xaml</DependentUpon>
+    </Compile>
     <Compile Include="temp.cs" />
+    <Page Include="editordel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -358,7 +371,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="pg\VBrak.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="pg\VForging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\VLat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\VNik.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="pg\VSharping.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -532,6 +561,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="ldlogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -542,7 +574,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="ldlogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

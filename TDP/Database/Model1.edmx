@@ -13,6 +13,7 @@
           <Property Name="DFDate" Type="date" Nullable="false" />
           <Property Name="DFName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DFTName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DFPlace" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DFSize" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DFCount" Type="int" Nullable="false" />
         </EntityType>
@@ -25,6 +26,7 @@
         <EntityType Name="DefectType">
           <Key>
             <PropertyRef Name="DFType" />
+            <PropertyRef Name="FDTPlaceAll" />
           </Key>
           <Property Name="DFType" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FDTPlaceAll" Type="varchar" MaxLength="50" Nullable="false" />
@@ -115,15 +117,17 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Defect_DefectType1">
+        <Association Name="FK_Defect_DefectType">
           <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
           <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DefectType">
               <PropertyRef Name="DFType" />
+              <PropertyRef Name="FDTPlaceAll" />
             </Principal>
             <Dependent Role="Defect">
               <PropertyRef Name="DFTName" />
+              <PropertyRef Name="DFPlace" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -233,37 +237,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище ModelContainer">
           <EntitySet Name="Defect" EntityType="Self.Defect" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DefectPlace" EntityType="Self.DefectPlace" Schema="dbo" store:Type="Tables" />
@@ -276,7 +249,7 @@
           <EntitySet Name="Forging" EntityType="Self.Forging" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sharping" EntityType="Self.Sharping" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
+          <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
             <End Role="DefectType" EntitySet="DefectType" />
             <End Role="Defect" EntitySet="Defect" />
           </AssociationSet>
@@ -326,9 +299,10 @@
           <Property Name="DFDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DFName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DFTName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DFPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DFSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DFCount" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DefectType" Relationship="Self.FK_Defect_DefectType1" FromRole="Defect" ToRole="DefectType" />
+          <NavigationProperty Name="DefectType" Relationship="Self.FK_Defect_DefectType" FromRole="Defect" ToRole="DefectType" />
           <NavigationProperty Name="Detail" Relationship="Self.FK_Defect_Detail" FromRole="Defect" ToRole="Detail" />
         </EntityType>
         <EntityType Name="DefectPlace">
@@ -341,10 +315,11 @@
         <EntityType Name="DefectType">
           <Key>
             <PropertyRef Name="DFType" />
+            <PropertyRef Name="FDTPlaceAll" />
           </Key>
           <Property Name="DFType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FDTPlaceAll" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_DefectType1" FromRole="DefectType" ToRole="Defect" />
+          <NavigationProperty Name="Defect" Relationship="Self.FK_Defect_DefectType" FromRole="DefectType" ToRole="Defect" />
           <NavigationProperty Name="DefectPlace" Relationship="Self.FK_DefectType_DefectPlace" FromRole="DefectType" ToRole="DefectPlace" />
         </EntityType>
         <EntityType Name="Detail">
@@ -446,15 +421,17 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Defect_DefectType1">
+        <Association Name="FK_Defect_DefectType">
           <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
           <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DefectType">
               <PropertyRef Name="DFType" />
+              <PropertyRef Name="FDTPlaceAll" />
             </Principal>
             <Dependent Role="Defect">
               <PropertyRef Name="DFTName" />
+              <PropertyRef Name="DFPlace" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -576,7 +553,7 @@
           <EntitySet Name="Forging" EntityType="Self.Forging" />
           <EntitySet Name="Sharping" EntityType="Self.Sharping" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
+          <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
             <End Role="DefectType" EntitySet="DefectType" />
             <End Role="Defect" EntitySet="Defect" />
           </AssociationSet>
@@ -612,48 +589,7 @@
             <End Role="Detail" EntitySet="Detail" />
             <End Role="Sharping" EntitySet="Sharping" />
           </AssociationSet>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -667,6 +603,7 @@
                 <ScalarProperty Name="DFDate" ColumnName="DFDate" />
                 <ScalarProperty Name="DFName" ColumnName="DFName" />
                 <ScalarProperty Name="DFTName" ColumnName="DFTName" />
+                <ScalarProperty Name="DFPlace" ColumnName="DFPlace" />
                 <ScalarProperty Name="DFSize" ColumnName="DFSize" />
                 <ScalarProperty Name="DFCount" ColumnName="DFCount" />
               </MappingFragment>
@@ -780,30 +717,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Model.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Model.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Model.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Model.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Model.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

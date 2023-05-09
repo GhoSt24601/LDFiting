@@ -34,7 +34,7 @@ namespace TDP.pg
             DataContext = this;
 
             updateDetails();
-
+            cbsort.SelectedIndex = 0;
         }
         public class ItemSort
         {
@@ -69,27 +69,22 @@ namespace TDP.pg
             zerg.ItemsSource = detailsb;
         }
         public static ObservableCollection<Detail> detailsb { get; set; }
-        pg.ND pgnd = new pg.ND();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
-            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content==null)
+            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                    pgnd = new pg.ND();
-                    f4.Navigate(pgnd);
+                f4.Navigate(new pg.ND(null));
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
-                pgnd = null;
                 updateDetails();
-                GC.Collect();
             }
         }
 
         private void unvis(object sender, MouseButtonEventArgs e)
         {
-            
             if (f4.Visibility == Visibility.Visible)
             {
                 Point pt = e.GetPosition((UIElement)sender);
@@ -99,17 +94,36 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
-                        pgnd = null;
                         updateDetails();
-                        GC.Collect();
                     }
                 }
             }
         }
-
-        private void sel(object sender, RoutedEventArgs e)
+        public editordel eod;
+        private void sel(object sender, MouseButtonEventArgs e)
         {
-           
+            eod = new editordel();
+            var selectedDetail = zerg.SelectedItem as Detail;
+
+            eod.ShowDialog();
+            switch (eod.stg)
+            {
+                case 1:
+                    f4.Visibility = Visibility.Visible;
+                    f4.Navigate(new pg.ND(selectedDetail));
+                    break;
+                case 2:
+                    try
+                    {
+                        conn.GetModel().Detail.Remove(selectedDetail);
+                        conn.GetModel().SaveChanges();
+                    }
+
+                    catch { return; }
+                    break;
+
+            }
+            updateDetails();
         }
     }
 }

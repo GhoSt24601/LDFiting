@@ -75,6 +75,7 @@
                   MouseDoubleClick="sel"
                   HorizontalContentAlignment="Stretch"
                   Grid.Row="2" 
+                  Margin="7,0,7,0" 
                   ItemsSource="{Binding detailsb}"
                   HorizontalAlignment="Stretch">
             <ListView.ItemTemplate>

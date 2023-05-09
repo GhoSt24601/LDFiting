@@ -495,6 +495,298 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style x:Key="ListViewItemContainerStyleViewSharping" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Name}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Size}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MaxMass}"></Run>
+                            <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MinMass}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Raznost}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MedMass}"></Run>
+                    <Run Text="г"></Run>
+                            </TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleViewLat" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="30" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Name}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Size}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding CountKor}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding CountDet}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding CountPod}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MassNetMed}"></Run>
+                    <Run Text="кг"></Run></TextBlock>
+                            <TextBlock Grid.Column="6"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MassNet}"></Run>
+                                <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="7" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding CountInKor}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="8"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MedMass}"></Run>
+                            <Run Text="г"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="9"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MassTara}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="10"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MassPod}"></Run>
+                    <Run Text="кг"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="11"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding MassBrutto}"></Run>
+                    <Run Text="кг"></Run></TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="ListViewItemContainerStyleViewBrak" TargetType="{x:Type ListViewItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListViewItem}">
+                    <Border HorizontalAlignment="Stretch" Height="30" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Name}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="1" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding Size}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="2"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding raspil}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="3"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding naladka}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding nedoof}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding sht}"></Run></TextBlock>
+                            <TextBlock Grid.Column="6"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding rassl}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="7" 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding nagrev}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="8"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding neobrab}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="9"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding acnaladka}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="10"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding drobl}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="11"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding sledinstr}"></Run></TextBlock>
+                            <TextBlock Grid.Column="12"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding zausenec}"></Run></TextBlock>
+                            <TextBlock Grid.Column="13"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding mo}"></Run></TextBlock>
+                            <TextBlock Grid.Column="14"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding nedopokrit}"></Run></TextBlock>
+                            <TextBlock Grid.Column="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding neodnor}"></Run></TextBlock>
+                            <TextBlock Grid.Column="16"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding otsloenie}"></Run></TextBlock>
+                            <TextBlock Grid.Column="17"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding meh}"></Run></TextBlock>
+                            <TextBlock Grid.Column="18"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding rzhav}"></Run></TextBlock>
+                            <TextBlock Grid.Column="19"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding itogosht}"></Run></TextBlock>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#ff2b2d31"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="#FF8a66ee"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style x:Key="ListViewItemContainerStyleDef" TargetType="{x:Type ListViewItem}">
         <Setter Property="Template">
             <Setter.Value>
@@ -502,6 +794,7 @@
                     <Border HorizontalAlignment="Stretch" Height="24" Background="{TemplateBinding Background}" CornerRadius="4" Margin="0,0,0,2">
                         <Grid HorizontalAlignment="Stretch">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
                                 <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -529,6 +822,11 @@
                     <Run Text="{Binding DFTName}"></Run>
                             </TextBlock>
                             <TextBlock Grid.Column="4"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center">
+                    <Run Text="{Binding DFPlace}"></Run>
+                            </TextBlock>
+                            <TextBlock Grid.Column="5"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center">
                     <Run Text="{Binding DFCount}"></Run>

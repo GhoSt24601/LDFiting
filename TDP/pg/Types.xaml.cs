@@ -21,6 +21,7 @@ using System.Data.SqlTypes;
 using TDP.Database;
 using System.Security.AccessControl;
 using System.Runtime.CompilerServices;
+using System.Data.Entity.Migrations;
 
 namespace TDP.pg
 {
@@ -29,14 +30,14 @@ namespace TDP.pg
     /// </summary>
     public partial class Types : Page
     {
-       
+
         public Types()
         {
             InitializeComponent();
             DataContext = this;
 
             updateDetails();
-
+            cbsort.SelectedIndex = 0;
         }
         public class ItemSort
         {
@@ -73,7 +74,7 @@ namespace TDP.pg
             if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                    f4.Navigate(new pg.NDT(null));
+                f4.Navigate(new pg.NDT(null));
             }
             else
             {
@@ -98,12 +99,31 @@ namespace TDP.pg
                 }
             }
         }
-
+        public editordel eod;
         private void sel(object sender, MouseButtonEventArgs e)
         {
+            eod = new editordel();
             var selectedDetail = zerg.SelectedItem as DetailType;
-            f4.Visibility = Visibility.Visible;
-            f4.Navigate(new pg.NDT(selectedDetail));
+
+            eod.ShowDialog();
+            switch (eod.stg)
+            {
+                case 1:
+                    f4.Visibility = Visibility.Visible;
+                    f4.Navigate(new pg.NDT(selectedDetail));
+                    break;
+                case 2:
+                    try
+                    {  
+                        conn.GetModel().DetailType.Remove(selectedDetail);
+                        conn.GetModel().SaveChanges();
+                    }
+
+                    catch { return; }
+                    break;
+
+            }
+            updateDetails();
         }
     }
 }

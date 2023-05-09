@@ -33,7 +33,7 @@ namespace TDP.pg
             DataContext = this;
 
             updateDetails();
-
+            cbsort.SelectedIndex = 0;
         }
         public class ItemSort
         {
@@ -65,23 +65,18 @@ namespace TDP.pg
             zerg.ItemsSource = sizesb;
         }
         public static ObservableCollection<DetailSize> sizesb { get; set; }
-        pg.NDS pgnds= new pg.NDS();
         private void newdetail_Click(object sender, RoutedEventArgs e)
         {
             if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
             {
                 f4.Visibility = Visibility.Visible;
-                    pgnds = new pg.NDS();
-                    f4.Navigate(pgnds);
+                f4.Navigate(new pg.NDS(null));
             }
             else
             {
                 f4.Visibility = Visibility.Hidden;
-                pgnds = null;
                 updateDetails();
-                GC.Collect();
             }
-
         }
 
         private void unvis(object sender, MouseButtonEventArgs e)
@@ -95,13 +90,39 @@ namespace TDP.pg
                     if (e.ChangedButton == MouseButton.Left)
                     {
                         f4.Visibility = Visibility.Hidden;
-                        pgnds = null;
                         updateDetails();
-                        GC.Collect();
                     }
                 }
             }
         }
+        public editordel eod;
+        private void sel(object sender, MouseButtonEventArgs e)
+        {
+            
+                eod = new editordel();
+                var selectedDetail = zerg.SelectedItem as DetailSize;
+
+                eod.ShowDialog();
+                switch (eod.stg)
+                {
+                    case 1:
+                        f4.Visibility = Visibility.Visible;
+                        f4.Navigate(new pg.NDS(selectedDetail));
+                        break;
+                    case 2:
+                        try
+                        {
+                            conn.GetModel().DetailSize.Remove(selectedDetail);
+                            conn.GetModel().SaveChanges();
+                        }
+
+                        catch { return; }
+                        break;
+
+                }
+                updateDetails();
+            }
+        
 
     }
 }

@@ -18,6 +18,7 @@ namespace TDP.Database
         public System.DateTime DFDate { get; set; }
         public string DFName { get; set; }
         public string DFTName { get; set; }
+        public string DFPlace { get; set; }
         public string DFSize { get; set; }
         public int DFCount { get; set; }
     

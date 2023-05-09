@@ -30,14 +30,6 @@
                          Style="{StaticResource SPGray}" 
                          Width="140" 
                          Height="24" Checked="RBSizes_Checked"/>
-            <RadioButton x:Name="RBDefects" Content="Дефекты" 
-                         Style="{StaticResource SPGray}" 
-                         Width="140" 
-                         Height="24" Checked="RBDefects_Checked"/>
-            <RadioButton x:Name="RBDefectPlaces" Content="Участки дефектов" 
-                         Style="{StaticResource SPGray}" 
-                         Width="220" 
-                         Height="24" Checked="RBDefectPlaces_Checked"/>
         </StackPanel>
         <Frame x:Name="f3" Grid.Row="1"></Frame>
     </Grid>

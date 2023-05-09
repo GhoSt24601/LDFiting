@@ -8,6 +8,7 @@
     <Property Name="DFDate" Type="date" Nullable="false" />
     <Property Name="DFName" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DFTName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DFPlace" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DFSize" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="DFCount" Type="int" Nullable="false" />
   </EntityType>
@@ -20,6 +21,7 @@
   <EntityType Name="DefectType">
     <Key>
       <PropertyRef Name="DFType" />
+      <PropertyRef Name="FDTPlaceAll" />
     </Key>
     <Property Name="DFType" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FDTPlaceAll" Type="varchar" MaxLength="50" Nullable="false" />
@@ -110,15 +112,17 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <Association Name="FK_Defect_DefectType1">
+  <Association Name="FK_Defect_DefectType">
     <End Role="DefectType" Type="Self.DefectType" Multiplicity="1" />
     <End Role="Defect" Type="Self.Defect" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DefectType">
         <PropertyRef Name="DFType" />
+        <PropertyRef Name="FDTPlaceAll" />
       </Principal>
       <Dependent Role="Defect">
         <PropertyRef Name="DFTName" />
+        <PropertyRef Name="DFPlace" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -228,37 +232,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="Хранилище ModelContainer">
     <EntitySet Name="Defect" EntityType="Self.Defect" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DefectPlace" EntityType="Self.DefectPlace" Schema="dbo" store:Type="Tables" />
@@ -271,7 +244,7 @@
     <EntitySet Name="Forging" EntityType="Self.Forging" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sharping" EntityType="Self.Sharping" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Defect_DefectType1" Association="Self.FK_Defect_DefectType1">
+    <AssociationSet Name="FK_Defect_DefectType" Association="Self.FK_Defect_DefectType">
       <End Role="DefectType" EntitySet="DefectType" />
       <End Role="Defect" EntitySet="Defect" />
     </AssociationSet>

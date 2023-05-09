@@ -134,7 +134,7 @@
                        Style="{StaticResource TBlock}"></TextBlock>
         </Grid>
         <ListView Name="zerg" ItemContainerStyle="{DynamicResource ListViewItemContainerStyleViewForging}" Style="{DynamicResource ListViewStyle1}"
-                  MouseDoubleClick="sel"
+                 
                   HorizontalContentAlignment="Stretch"
                   Grid.Row="2" 
                   Margin="7,0,7,0"

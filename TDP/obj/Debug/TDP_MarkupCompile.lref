@@ -1,5 +1,6 @@
 ﻿
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\App.xaml;;
+FC:\Users\Your life for Aiur\source\repos\TDP\TDP\editordel.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\MainWindow.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\DefectPlaces.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\Defects.xaml;;
@@ -22,7 +23,11 @@ FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\NDFT.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\PSharping.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\Sizes.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\Types.xaml;;
+FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\VBrak.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\VForging.xaml;;
+FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\VLat.xaml;;
+FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\VNik.xaml;;
+FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\VSharping.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\main.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\ND.xaml;;
 FC:\Users\Your life for Aiur\source\repos\TDP\TDP\pg\NDS.xaml;;

@@ -45,6 +45,7 @@
 
             <TextBox Style="{DynamicResource TextBoxStyle1}"
                      x:Name="Name1"
+                     Text="{Binding DSName}"
                      Width="300" Height="50"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Bottom"
@@ -57,6 +58,7 @@
                      MaxLength="50"></TextBox>
             <TextBox Style="{DynamicResource TextBoxStyle1}"
                      x:Name="Name2"
+                     Text="{Binding DSDName}"
                      Width="300"
                      Height="50"
                      HorizontalAlignment="Center"
@@ -73,6 +75,7 @@
                      Style="{StaticResource TextBoxStyle1}" 
                      Width="300" 
                      Height="50" 
+                     Text="{Binding DSNName}"
                      HorizontalAlignment="Center" 
                      VerticalAlignment="Bottom" 
                      Margin="16" 

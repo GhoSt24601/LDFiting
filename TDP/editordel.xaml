@@ -1,0 +1,49 @@
+﻿<Window x:Class="TDP.editordel" FontFamily="eurostile" FontSize="16"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TDP"
+        mc:Ignorable="d"
+        Height="100" Width="320" ResizeMode="NoResize" Icon="/ldlogo.png" WindowStyle="None">
+    <Border Background="#FF2b2d31" BorderThickness="1" BorderBrush="#FF8a66ee">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="24"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Border Background="#FF1E1F22" 
+                    Grid.ColumnSpan="2"
+                    MouseDown="MD"></Border>
+            <Button Style="{StaticResource TButton}" 
+                        x:Name="BClose" 
+                        Foreground="#FFF9F9F9" 
+                        Grid.Column="1" Width="34" 
+                        FontFamily="eurostile extd medium" 
+                        FontSize="16" Height="24" 
+                        HorizontalAlignment="Right" 
+                        VerticalAlignment="Center"
+                        Click="BClose_Click" 
+                        Content="✕" />
+            <RadioButton x:Name="RBEdit"  
+                             Content="Изменить" 
+                             Height="50" 
+                             Grid.Row="2"
+                         Width="150"
+                             Style="{StaticResource editb}" 
+                             Checked="RBEdit_Checked"></RadioButton>
+            <RadioButton x:Name="RBDel"  
+                             Content="Удалить" 
+                             Height="50" 
+                         Width="150"
+                             Grid.Row="2"
+                         Grid.Column="1"
+                             Style="{StaticResource delb}" 
+                             Checked="RBDel_Checked"></RadioButton>
+        </Grid>
+    </Border>
+</Window>

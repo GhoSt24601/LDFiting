@@ -25,8 +25,11 @@ namespace TDP
         public MainWindow()
         {
             InitializeComponent();
+            
         }
-
+        
+        
+        
         private void BClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
@@ -81,18 +84,21 @@ namespace TDP
                 if (newHeight > 0) this.Height = newHeight;
             }
         }
-       
+        pg.fview fv = new pg.fview();
+        pg.EntryView ev = new pg.EntryView();
+        pg.View v = new pg.View();
         private void RBView_Checked(object sender, RoutedEventArgs e)
         {
-            f1.Navigate(new pg.fview());
+            f1.Navigate(fv);
         }
         private void RBNewStroke_Checked(object sender, RoutedEventArgs e)
         {
-            f1.Navigate(new pg.EntryView());
+            f1.Navigate(ev);
         }
         private void RBNewDetail_Checked(object sender, RoutedEventArgs e)
         {
-            f1.Navigate(new pg.View());
+            f1.Navigate(v);
         }
+        
     }
 }

@@ -63,10 +63,13 @@ namespace TDP.pg
                 }
                 catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
                 detail = new Database.Defect();
+                var amd = conn.GetModel().DefectType.Where(q=> q.DFType==DefType).FirstOrDefault();
+                if (CBDF.SelectedIndex == 4) { amd.FDTPlaceAll = "ГШО"; }
                 detail.DFName = NameDet;
                 detail.DFSize = SizeDet;
                 detail.DFDate = DateDet;
                 detail.DFCount = Count;
+                detail.DFPlace = amd.FDTPlaceAll;
                 detail.DFTName = DefType;
                 conn.GetModel().Defect.Add(detail);
                 conn.GetModel().SaveChanges();

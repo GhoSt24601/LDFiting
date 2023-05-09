@@ -190,3 +190,13 @@ C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VForging.g.cs
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VForging.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\fview.g.cs
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\fview.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VSharping.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VSharping.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VBrak.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VLat.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VNik.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VBrak.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VLat.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VNik.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\editordel.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\editordel.baml

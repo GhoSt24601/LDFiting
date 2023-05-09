@@ -32,22 +32,22 @@ namespace TDP.pg
 
         private void RBR_Checked(object sender, RoutedEventArgs e)
         {
-
+            f3.Navigate(new pg.VSharping());
         }
 
         private void RBLat_Checked(object sender, RoutedEventArgs e)
         {
-
+            f3.Navigate(new pg.VLat());
         }
 
         private void RBNik_Checked(object sender, RoutedEventArgs e)
         {
-
+            f3.Navigate(new pg.VNik());
         }
 
         private void RBB_Checked(object sender, RoutedEventArgs e)
         {
-
+            f3.Navigate(new pg.VBrak());
         }
     }
 }

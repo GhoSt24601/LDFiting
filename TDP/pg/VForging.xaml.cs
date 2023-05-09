@@ -107,13 +107,11 @@ namespace TDP.pg
                             {
                                 if (item.DName == it2.FName && item.DSize == it2.FSize)
                                 {
-                                    if (Date1.SelectedDate!=null && Date2.SelectedDate != null)
+                                    if (it2.FDate > Date1.SelectedDate && it2.FDate < Date2.SelectedDate)
                                     {
-                                        if (it2.FDate > Date1.SelectedDate && it2.FDate < Date2.SelectedDate)
-                                        {
-                                            dlss.Add(new ds() { Name = it2.FName, Size = it2.FSize, Date = it2.FDate, Mass = it2.FMass });
-                                        }
+                                        dlss.Add(new ds() { Name = it2.FName, Size = it2.FSize, Date = it2.FDate, Mass = it2.FMass });
                                     }
+
                                 }
                             }
                             break;
@@ -145,43 +143,8 @@ namespace TDP.pg
         }
         public static ObservableCollection<Forging> typesb { get; set; }
         public static ObservableCollection<Detail> detai { get; set; }
-        private void newdetail_Click(object sender, RoutedEventArgs e)
-        {
-            if (f4.Visibility == Visibility.Hidden || f4.NavigationService.Content == null)
-            {
-                f4.Visibility = Visibility.Visible;
-                f4.Navigate(new pg.NDT(null));
-            }
-            else
-            {
-                f4.Visibility = Visibility.Hidden;
-                updateDetails();
-            }
-        }
 
-        private void unvis(object sender, MouseButtonEventArgs e)
-        {
-            if (f4.Visibility == Visibility.Visible)
-            {
-                Point pt = e.GetPosition((UIElement)sender);
-                HitTestResult result = VisualTreeHelper.HitTest(f4, pt);
-                if (result != null)
-                {
-                    if (e.ChangedButton == MouseButton.Left)
-                    {
-                        f4.Visibility = Visibility.Hidden;
-                        updateDetails();
-                    }
-                }
-            }
-        }
 
-        private void sel(object sender, MouseButtonEventArgs e)
-        {
-            var selectedDetail = zerg.SelectedItem as DetailType;
-            f4.Visibility = Visibility.Visible;
-            f4.Navigate(new pg.NDT(selectedDetail));
-        }
         public class Filter
         {
             public string DisplayName { get; set; }
@@ -249,6 +212,14 @@ namespace TDP.pg
                 case 2: Year.Visibility = Visibility.Hidden; Month.Visibility = Visibility.Hidden; Date1.Visibility = Visibility.Visible; Date2.Visibility = Visibility.Visible; s.Visibility = Visibility.Visible; po.Visibility = Visibility.Visible; break;
 
             }
+            updateDetails();
+        }
+        private void Date1_Changed(object sender, SelectionChangedEventArgs e)
+        {
+            updateDetails();
+        }
+        private void Date2_Changed(object sender, SelectionChangedEventArgs e)
+        {
             updateDetails();
         }
     }

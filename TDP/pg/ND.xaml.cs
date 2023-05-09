@@ -18,6 +18,8 @@ using System.ComponentModel;
 using System.Net.Configuration;
 using System.Runtime.Remoting.Contexts;
 using System.Data.Entity.ModelConfiguration.Configuration;
+using System.Xml.Linq;
+using System.Data.Entity.Migrations;
 
 namespace TDP.pg
 {
@@ -28,11 +30,12 @@ namespace TDP.pg
     {
         public static ObservableCollection<Database.DetailType> detailtypes { get; set; }
         public static ObservableCollection<Database.DetailSize> detailsizes { get; set; }
-        public ND()
+        public ND(Detail detail)
         {
             InitializeComponent();
             updateCombobox();
-            DataContext = this;
+            DataContext = detail;
+            if (detail != null) { Badd.Content = "Изменить"; CBDN.IsEnabled = false; CBDS.IsEnabled = false; }
         }
         public void updateCombobox()
         {
@@ -43,6 +46,48 @@ namespace TDP.pg
             CBDN.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailtypes });
             CBDS.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailsizes });
         }
+        private void Edit()
+        {
+            CountDet1 = TCount.Text.Trim();
+            MassDet1 = TMass.Text.Trim();
+
+            if (CBDN.SelectedIndex > -1 && CBDS.SelectedIndex > -1 && CountDet1.Length != 0 && MassDet1.Length != 0)
+            {
+                NameDet = CBDN.Text.ToString();
+                SizeDet = CBDS.Text.ToString();
+                try
+                {
+                    CountDet = int.Parse(CountDet1);
+                    MassDet = float.Parse(MassDet1);
+                }
+                catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
+
+                var SK = conn.GetModel().Detail.Where(x => x.DName == NameDet && x.DSize == SizeDet).FirstOrDefault();
+                if (SK != null)
+                {
+                    SK.DCount = CountDet;
+                    SK.DMass = MassDet;
+                    var qwe = conn.GetModel().DetailType.Where(q => q.DTName == NameDet).FirstOrDefault();
+                    if (qwe != null)
+                    {
+                        SK.DDName = qwe.DTDName;
+                        SK.DDDName = qwe.DTNName;
+                    }
+                    var asd = conn.GetModel().DetailSize.Where(w => w.DSName == SizeDet).FirstOrDefault();
+                    if (asd != null)
+                    {
+                        SK.DDSize = asd.DSDName;
+                        SK.DDDSize = asd.DSNName;
+                    }
+
+                    conn.GetModel().Detail.AddOrUpdate(SK);
+                    conn.GetModel().SaveChanges();
+                    LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
+                }
+                else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+            }
+            else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
         public Database.Detail detail { get; set; }
         public string NameDet;
         public string SizeDet;
@@ -50,7 +95,7 @@ namespace TDP.pg
         public string CountDet1;
         public float MassDet;
         public string MassDet1;
-        private void Badd_Click(object sender, RoutedEventArgs e)
+        private void New()
         {
             CountDet1 = TCount.Text.Trim();
             MassDet1 = TMass.Text.Trim();
@@ -95,6 +140,17 @@ namespace TDP.pg
                 else { LMessage.Content = "Строка с такими данными уже существует"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
             }
             else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
+        private void Badd_Click(object sender, RoutedEventArgs e)
+        {
+            if (Badd.Content != "Изменить")
+            {
+                New();
+            }
+            else
+            {
+                Edit();
+            }
         }
     }
 }
