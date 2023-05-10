@@ -56,7 +56,7 @@
             <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" 
                       Style="{DynamicResource ComboBoxStyle1}" 
                   x:Name="CBDN" 
-                  SelectedItem="{Binding detail.DName}" 
+                  Text="{Binding FName}" 
                   DisplayMemberPath="DTName"  
                   Width="300" 
                   Height="50" 
@@ -70,7 +70,7 @@
             <ComboBox x:Name="CBDS" 
                       Style="{DynamicResource ComboBoxStyle1}" 
                       ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" 
-                  SelectedItem="{Binding detail.DSize}" 
+                  Text="{Binding FSize}" 
                   DisplayMemberPath="DSize"
                   Width="300" 
                   Height="50" 
@@ -83,6 +83,7 @@
                   Grid.Column="1" ></ComboBox>
             <TextBox Style="{DynamicResource TextBoxStyle1}" 
                      x:Name="TMass"  
+                     Text="{Binding FMass}" 
                      Width="300" 
                      Height="50" 
                      HorizontalAlignment="Center" 
@@ -96,6 +97,7 @@
                      MaxLength="9"></TextBox>
             <DatePicker Grid.Row="3" 
                         x:Name="Date"
+                        Text="{Binding FDate}" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"
                         Margin="0"

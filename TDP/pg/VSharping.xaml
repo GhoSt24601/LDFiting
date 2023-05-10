@@ -20,6 +20,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" 
                   Style="{DynamicResource ComboBoxStyle1}" 
@@ -49,7 +50,7 @@
                   VerticalContentAlignment="Center" 
                   HorizontalContentAlignment="Center" 
                   Grid.Column="1"
-                      Visibility="Hidden"></ComboBox>
+                      Visibility="Visible"></ComboBox>
             <ComboBox ItemContainerStyle="{DynamicResource ComboBoxItemContainerStyle1}" 
                   Style="{DynamicResource ComboBoxStyle1}" 
                   x:Name="Month" 
@@ -64,45 +65,46 @@
                   VerticalContentAlignment="Center" 
                   HorizontalContentAlignment="Center" 
                   Grid.Column="2"
-                      Visibility="Hidden"></ComboBox>
-            <Label Visibility="Hidden"
+                      Visibility="Visible"></ComboBox>
+            <Label Visibility="Visible"
                    FontSize="20"
                    Margin="0,6,0,0"
                    x:Name="s"
                    HorizontalContentAlignment="Center"
                    VerticalContentAlignment="Center"
                    Foreground="#FFf2f3f5"
-                   Grid.Column="0"
-                   HorizontalAlignment="Right"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
                    Content="С"></Label>
-            <Label Visibility="Hidden"
+            <Label Visibility="Visible"
                    x:Name="po"
                    Margin="0,6,0,0"
-                   FontSize="20" HorizontalContentAlignment="Center"
+                   FontSize="20" 
+                   HorizontalContentAlignment="Left"
                    VerticalContentAlignment="Center"
-                   Foreground="#FFf2f3f5" Grid.Column="1"
-                   HorizontalAlignment="Right"
+                   Foreground="#FFf2f3f5" Grid.Column="2"
+                   HorizontalAlignment="Left"
                    Content="По"></Label>
             <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle2}" 
                         Style="{DynamicResource DatePickerStyle2}" 
                         Grid.Column="1" 
-                        Visibility="Hidden"
+                        Visibility="Visible"
                         x:Name="Date1"
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Margin="7,6,0,0"
                         SelectedDateChanged="Date1_Changed"
-                        Width="200" ></DatePicker>
+                        Width="120" ></DatePicker>
             <DatePicker CalendarStyle="{DynamicResource DatePickerCalendarStyle2}" 
                         Style="{DynamicResource DatePickerStyle2}" 
                         Grid.Column="2" 
                         x:Name="Date2"
-                        Visibility="Hidden"
-                        HorizontalAlignment="Left"
+                        Visibility="Visible"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         SelectedDateChanged="Date2_Changed"
                         Margin="7,6,0,0"
-                        Width="200"></DatePicker>
+                        Width="120"></DatePicker>
         </Grid>
         <Grid Margin="7,2,7,2" Grid.Row="1">
 
