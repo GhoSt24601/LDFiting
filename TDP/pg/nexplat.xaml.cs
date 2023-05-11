@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
@@ -25,14 +26,17 @@ namespace TDP.pg
     {
         public static ObservableCollection<Database.DetailType> detailtypes { get; set; }
         public static ObservableCollection<Database.Detail> detailsizes { get; set; }
-        public nexplat()
+        public nexplat(ExportLat detail)
         {
             InitializeComponent();
             detailtypes = new ObservableCollection<DetailType>();
             conn.GetModel().DetailType.ToList().ForEach(detailtype => detailtypes.Add(detailtype));
             CBDN.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailtypes });
-            DataContext = this;
+            DataContext = detail;
+            
+            if (detail != null) { Badd.Content = "Изменить"; bgh = detail.ELId; CBDN.IsEnabled = false; CBDS.Items.Add(detail); CBDS.DisplayMemberPath = "ELSize"; CBDS.IsEnabled = false; }
         }
+        public int bgh;
 
         public Database.ExportLat detail { get; set; }
         public string NameDet;
@@ -43,7 +47,48 @@ namespace TDP.pg
         public int Count;
         public string Count1;
         public double detm;
-        private void Badd_Click(object sender, RoutedEventArgs e)
+        private void Edit()
+        {
+            if (Date.SelectedDate == null) { Date.SelectedDate = DateTime.Now; }
+            DateDet = Date.SelectedDate.Value;
+            MassDet1 = PMass.Text.Trim();
+            Count1 = TCount.Text.Trim();
+
+            if (MassDet1.Length != 0 && Count1.Length != 0)
+            {
+                NameDet = CBDN.Text.ToString();
+                SizeDet = CBDS.Text.ToString();
+                try
+                {
+                    MassDet = float.Parse(MassDet1);
+                    Count = int.Parse(Count1);
+                }
+                catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
+
+                var SK = conn.GetModel().ExportLat.Where(x => x.ELId == bgh).FirstOrDefault();
+                if (SK != null)
+                {
+                    var Kerrigan = conn.GetModel().Detail.Where(q => q.DName == NameDet && q.DSize == SizeDet).FirstOrDefault();
+                    if (Kerrigan != null)
+                    {
+                        detm = ((double)Kerrigan.DMass * 0.001) * Kerrigan.DCount;
+
+                    }
+                    SK.ELDate = DateDet;
+                    SK.ELPMass = MassDet;
+                    SK.ELKMass = 0.078 * Count;
+                    SK.ELKMassBrutto = 0.078 * Count + MassDet + detm * Count;
+                    SK.ELCount = Count;
+
+                    conn.GetModel().ExportLat.AddOrUpdate(SK);
+                    conn.GetModel().SaveChanges();
+                    LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
+                }
+                else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+            }
+            else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+        }
+        private void New()
         {
             if (Date.SelectedDate == null) { Date.SelectedDate = DateTime.Now; }
             DateDet = Date.SelectedDate.Value;
@@ -61,7 +106,7 @@ namespace TDP.pg
                     Count = int.Parse(Count1);
                 }
                 catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
-                var Kerrigan = conn.GetModel().Detail.Where(q => q.DDName == NameDet).FirstOrDefault();
+                var Kerrigan = conn.GetModel().Detail.Where(q => q.DName == NameDet && q.DSize==SizeDet).FirstOrDefault();
                 if (Kerrigan != null)
                 {
                     detm=((double)Kerrigan.DMass*0.001) *Kerrigan.DCount;
@@ -85,15 +130,21 @@ namespace TDP.pg
 
         private void CBDN_SelectionChanged(object sender, EventArgs e)
         {
-            if (detailsizes != null)
-            {
-                detailsizes = null;
-                GC.Collect();
-            }
             detailsizes = new ObservableCollection<Detail>();
             conn.GetModel().Detail.Where(q => q.DName == CBDN.Text).ToList().ForEach(detailsize => detailsizes.Add(detailsize));
             CBDS.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailsizes });
 
+        }
+        private void Badd_Click(object sender, RoutedEventArgs e)
+        {
+            if (Badd.Content != "Изменить")
+            {
+                New();
+            }
+            else
+            {
+                Edit();
+            }
         }
     }
 }

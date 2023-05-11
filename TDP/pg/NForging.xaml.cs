@@ -33,8 +33,8 @@ namespace TDP.pg
             conn.GetModel().DetailType.ToList().ForEach(detailtype => detailtypes.Add(detailtype));
             CBDN.SetBinding(ComboBox.ItemsSourceProperty, new Binding() { Source = detailtypes });
             DataContext = detail;
-            bgh = detail.FId;
-            if (detail != null) { Badd.Content = "Изменить"; CBDN.IsEnabled = false; CBDS.Items.Add(detail); CBDS.DisplayMemberPath = "FSize";CBDS.IsEnabled = false; }
+            
+            if (detail != null) { Badd.Content = "Изменить"; bgh = detail.FId; CBDN.IsEnabled = false; CBDS.Items.Add(detail); CBDS.DisplayMemberPath = "FSize";CBDS.IsEnabled = false; }
         }
         public int bgh;
         public Database.Forging detail { get; set; }

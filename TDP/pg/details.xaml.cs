@@ -119,7 +119,7 @@ namespace TDP.pg
                         conn.GetModel().SaveChanges();
                     }
 
-                    catch { return; }
+                    catch { conn.DBConnection = null; return; }
                     break;
 
             }
