@@ -19,13 +19,13 @@ namespace TDP.pg
         public PForging()
         {
             InitializeComponent();
-            DataContext = this;
-
-            updateDetails();
             YearsAdd();
             All.SelectedIndex = 0;
             Month.SelectedIndex = 0;
             cbsort.SelectedIndex = 0;
+            updateDetails();
+
+            DataContext = this;
 
         }
         public class ItemSort
@@ -215,6 +215,7 @@ namespace TDP.pg
             }
         }
         public editordel eod;
+        public error err;
         private void sel(object sender, MouseButtonEventArgs e)
         {
             eod = new editordel();
@@ -234,7 +235,7 @@ namespace TDP.pg
                         conn.GetModel().SaveChanges();
                     }
 
-                    catch { conn.DBConnection = null; return; }
+                    catch { conn.DBConnection = null; err = new error(2); err.ShowDialog(); return; }
                     break;
 
             }

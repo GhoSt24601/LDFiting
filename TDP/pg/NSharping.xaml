@@ -97,6 +97,8 @@
                      MaxLength="9"></TextBox>
             <DatePicker Grid.Row="3" 
                         x:Name="Date"
+                        CalendarStyle="{DynamicResource DatePickerCalendarStyle2}" 
+                        Style="{DynamicResource DatePickerStyle2}" 
                         Text="{Binding SDate}" 
                         HorizontalAlignment="Center"
                         VerticalAlignment="Bottom"

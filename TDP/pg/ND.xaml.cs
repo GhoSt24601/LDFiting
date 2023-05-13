@@ -66,7 +66,7 @@ namespace TDP.pg
                 if (SK != null)
                 {
                     SK.DCount = CountDet;
-                    SK.DMass = MassDet;
+                    SK.DMass = Math.Round(MassDet,2);
                     var qwe = conn.GetModel().DetailType.Where(q => q.DTName == NameDet).FirstOrDefault();
                     if (qwe != null)
                     {
@@ -119,7 +119,7 @@ namespace TDP.pg
                     detail.DName = NameDet;
                     detail.DSize = SizeDet;
                     detail.DCount = CountDet;
-                    detail.DMass = MassDet;
+                    detail.DMass = Math.Round(MassDet,2);
                     var qwe = conn.GetModel().DetailType.Where(q => q.DTName == NameDet).FirstOrDefault();
                     if (qwe != null)
                     {

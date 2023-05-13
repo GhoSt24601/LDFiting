@@ -161,7 +161,7 @@
             <TextBlock Text="Масса поддона"
                        Grid.Column="4"
                        Style="{StaticResource TBlock}"></TextBlock>
-            <TextBlock Text="Масса коробок"
+            <TextBlock Text="Масса гофротары"
                        Grid.Column="5"
                        Style="{StaticResource TBlock}"></TextBlock>
             <TextBlock Text="Масса брутто"
@@ -173,7 +173,7 @@
                   HorizontalContentAlignment="Stretch"
                   Grid.Row="2" 
                   Margin="7,0,7,0"
-                  ItemsSource="{Binding exportnikb}"
+                  ItemsSource="{Binding ens}"
                   HorizontalAlignment="Stretch">
             <ListView.ItemTemplate>
                 <DataTemplate>

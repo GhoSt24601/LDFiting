@@ -43,10 +43,19 @@ namespace TDP.pg
                 var SK = conn.GetModel().DetailSize.Where(x => x.DSName == NameDet1).FirstOrDefault();
                 if (SK != null)
                 {
-                    SK.DSName = NameDet1;
                     SK.DSDName = NameDet2;
                     SK.DSNName = NameDet3;
                     conn.GetModel().DetailSize.AddOrUpdate(SK);
+                    conn.GetModel().SaveChanges();
+                    LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
+                }
+                else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+                var SK1 = conn.GetModel().Detail.Where(x => x.DSize == SK.DSName).FirstOrDefault();
+                if (SK1 != null)
+                {
+                    SK1.DDSize = NameDet2;
+                    SK1.DDDSize = NameDet3;
+                    conn.GetModel().Detail.AddOrUpdate(SK1);
                     conn.GetModel().SaveChanges();
                     LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
                 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TDP"
         xmlns:icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Height="900" Width="1400" MinWidth="1400" MinHeight="900" MaxWidth="5000" MaxHeight="3000" WindowStyle="None" Icon="/ldlogo.png"  AllowsTransparency="True">
+        Height="900" Width="1500" MinWidth="1500" MinHeight="900" MaxWidth="5000" MaxHeight="3000" WindowStyle="None" Icon="/ldlogo.png"  AllowsTransparency="True">
     <Border Background="#FF2b2d31" BorderThickness="1" BorderBrush="#FF8a66ee" >
         <Grid>
             <Grid.RowDefinitions>

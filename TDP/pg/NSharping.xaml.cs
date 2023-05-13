@@ -58,7 +58,7 @@ namespace TDP.pg
                         MassDet = float.Parse(MassDet1);
                     }
                     catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
-                    SK.SMass = MassDet;
+                    SK.SMass = Math.Round(MassDet,2);
                     SK.SDate = DateDet;
 
                     conn.GetModel().Sharping.AddOrUpdate(SK);
@@ -89,7 +89,7 @@ namespace TDP.pg
                 detail.SName = NameDet;
                 detail.SSize = SizeDet;
                 detail.SDate = DateDet;
-                detail.SMass = MassDet;
+                detail.SMass = Math.Round(MassDet,2);
                 conn.GetModel().Sharping.Add(detail);
                 conn.GetModel().SaveChanges();
                 LMessage.Content = "Данные сохранены"; LMessage.Foreground = new SolidColorBrush(Colors.White);

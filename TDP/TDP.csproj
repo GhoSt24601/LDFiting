@@ -215,8 +215,14 @@
     <Compile Include="Database\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="EditDelWord.xaml.cs">
+      <DependentUpon>EditDelWord.xaml</DependentUpon>
+    </Compile>
     <Compile Include="editordel.xaml.cs">
       <DependentUpon>editordel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="error.xaml.cs">
+      <DependentUpon>error.xaml</DependentUpon>
     </Compile>
     <Compile Include="pg\DetView.xaml.cs">
       <DependentUpon>DetView.xaml</DependentUpon>
@@ -269,8 +275,15 @@
     <Compile Include="pg\VSharping.xaml.cs">
       <DependentUpon>VSharping.xaml</DependentUpon>
     </Compile>
-    <Compile Include="temp.cs" />
+    <Page Include="EditDelWord.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="editordel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="error.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -403,10 +416,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="pg\main.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="pg\ND.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -416,10 +425,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="pg\NDT.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="pg\newdetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -480,9 +485,6 @@
     <Compile Include="pg\EntryView.xaml.cs">
       <DependentUpon>EntryView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="pg\main.xaml.cs">
-      <DependentUpon>main.xaml</DependentUpon>
-    </Compile>
     <Compile Include="pg\ND.xaml.cs">
       <DependentUpon>ND.xaml</DependentUpon>
     </Compile>
@@ -497,9 +499,6 @@
     </Compile>
     <Compile Include="pg\NDT.xaml.cs">
       <DependentUpon>NDT.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="pg\newdetail.xaml.cs">
-      <DependentUpon>newdetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="pg\Sizes.xaml.cs">
       <DependentUpon>Sizes.xaml</DependentUpon>
@@ -574,6 +573,35 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

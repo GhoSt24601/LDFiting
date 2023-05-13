@@ -14,17 +14,13 @@ C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.csproj.GenerateRe
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.csproj.CoreCompileInputs.cache
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.exe
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.pdb
-C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\main.g.cs
-C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\main.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\bin\Debug\EntityFramework.dll
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\bin\Debug\EntityFramework.xml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\ND.g.cs
-C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\newdetail.g.cs
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP_Content.g.cs
-C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\newdetail.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\ND.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.csproj.CopyComplete
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\NDS.g.cs
@@ -200,3 +196,8 @@ C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VLat.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\pg\VNik.baml
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\editordel.g.cs
 C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\editordel.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\error.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\error.baml
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\TDP.csproj.ResolveComReference.cache
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\EditDelWord.g.cs
+C:\Users\Your life for Aiur\source\repos\TDP\TDP\obj\Debug\EditDelWord.baml

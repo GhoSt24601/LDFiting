@@ -26,33 +26,28 @@ namespace TDP.pg
             DataContext = this;
 
         }
-        pg.PForging pgd = new pg.PForging();
-        pg.PSharping pgs = new pg.PSharping();
-        pg.explat pgel = new pg.explat();
-        pg.expnik pgen = new pg.expnik();
-        pg.pdefect pgdp = new pg.pdefect();
         private void RBForging_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgd);
+            f3.Navigate(new pg.PForging());
         }
 
         private void RBSharping_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgs);
+            f3.Navigate(new pg.PSharping());
         }
 
         private void RBLat_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgel);
+            f3.Navigate(new pg.explat());
         }
 
         private void RBNik_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgen);
+            f3.Navigate(new pg.expnik());
         }
         private void RBDef_Checked(object sender, RoutedEventArgs e)
         {
-            f3.Navigate(pgdp);
+            f3.Navigate(new pg.pdefect());
         }
     }
 }

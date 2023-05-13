@@ -53,6 +53,17 @@ namespace TDP.pg
                     LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
                 }
                 else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
+                var SK1 = conn.GetModel().Detail.Where(x => x.DName == SK.DTName).FirstOrDefault();
+                if (SK1 != null)
+                {
+                    SK1.DDName = NameDet2;
+                    SK1.DDDName = NameDet3;
+
+                    conn.GetModel().Detail.AddOrUpdate(SK1);
+                    conn.GetModel().SaveChanges();
+                    LMessage.Content = "Изменено"; LMessage.Foreground = new SolidColorBrush(Colors.White);
+                }
+                else { LMessage.Content = "Невозможно изменить"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
             }
             else { LMessage.Content = "Введите данные"; LMessage.Foreground = new SolidColorBrush(Colors.Red); }
         }

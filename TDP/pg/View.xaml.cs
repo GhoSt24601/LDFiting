@@ -50,13 +50,5 @@ namespace TDP.pg
             f3.Navigate(new pg.Sizes());
         }
 
-        private void RBDefects_Checked(object sender, RoutedEventArgs e)
-        {
-            f3.Navigate(new pg.Defects());
-        }
-        private void RBDefectPlaces_Checked(object sender, RoutedEventArgs e)
-        {
-            f3.Navigate(new pg.DefectPlaces());
-        }
     }
 }

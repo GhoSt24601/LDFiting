@@ -24,12 +24,15 @@ namespace TDP
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
+            try
+            {
+                InitializeComponent();
+            }
+            catch { err = new error(1); err.ShowDialog(); }
         }
-        
-        
-        
+        public error err;
+
+
         private void BClose_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

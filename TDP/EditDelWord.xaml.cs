@@ -19,9 +19,9 @@ namespace TDP
     /// <summary>
     /// Логика взаимодействия для editordel.xaml
     /// </summary>
-    public partial class editordel : Window
+    public partial class EditDelWord : Window
     {
-        public editordel()
+        public EditDelWord()
         {
             InitializeComponent();
             double screenHeight = SystemParameters.FullPrimaryScreenHeight;
@@ -33,12 +33,12 @@ namespace TDP
         }
 
 
-        public int stg=0;
-        
+        public int stg = 0;
+
         private void RBEdit_Checked(object sender, RoutedEventArgs e)
         {
             this.Close();
-            stg =1;
+            stg = 1;
         }
 
         private void RBDel_Checked(object sender, RoutedEventArgs e)
@@ -62,6 +62,12 @@ namespace TDP
             {
                 DragMove();
             }
+        }
+
+        private void RBWord_Checked(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            stg = 3;
         }
     }
 }

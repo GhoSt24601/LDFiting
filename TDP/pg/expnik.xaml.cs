@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Word;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,6 +17,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TDP.Database;
+using static TDP.pg.explat;
+using Page = System.Windows.Controls.Page;
+using Point = System.Windows.Point;
+using Word = Microsoft.Office.Interop.Word;
 
 namespace TDP.pg
 {
@@ -26,13 +32,13 @@ namespace TDP.pg
         public expnik()
         {
             InitializeComponent();
-            DataContext = this;
-
-            updateDetails();
             YearsAdd();
             All.SelectedIndex = 0;
             Month.SelectedIndex = 0;
             cbsort.SelectedIndex = 0;
+            updateDetails();
+
+            DataContext = this;
         }
         public class ItemSort
         {
@@ -109,17 +115,31 @@ namespace TDP.pg
             Year.SelectedIndex = d - 1;
             d = 0;
         }
+        public class en
+        {
+            public int ENId { get; set; }
+            public DateTime ENDate { get; set; }
+            public string ENName { get; set; }
+            public string ENSize { get; set; }
+            public int ENCount { get; set; }
+            public double ENPMass { get; set; }
+            public double ENKMass { get; set; }
+            public double ENKMassBrutto { get; set; }
+        }
+        public static ObservableCollection<en> ens { get; set; }
         public void updateDetails()
         {
             exportnikb = new ObservableCollection<ExportNik>();
             exportnikb1 = new ObservableCollection<ExportNik>();
+            ens = new ObservableCollection<en>();
             conn.GetModel().ExportNik.ToList().ForEach(detail => exportnikb.Add(detail));
             foreach (var item in exportnikb)
             {
                 switch (All.SelectedIndex)
                 {
                     case 0:
-                        exportnikb1.Add(item);
+                        //exportnikb1.Add(item);
+                        ens.Add(new en() { ENId = item.ENId, ENName = item.ENName, ENSize = item.ENSize, ENCount = item.ENCount, ENDate = item.ENDate, ENKMass = Math.Round(item.ENKMass, 1), ENPMass = Math.Round(item.ENPMass, 1), ENKMassBrutto = Math.Round(item.ENKMassBrutto, 1) });
                         break;
                     case 1:
                         {
@@ -130,7 +150,8 @@ namespace TDP.pg
                                     var amd = Years.Where(q => q.Number == Year.SelectedIndex).FirstOrDefault();
                                     if (item.ENDate.Year == amd.DisplayName && item.ENDate.Month == Month.SelectedIndex)
                                     {
-                                        exportnikb1.Add(item);
+                                        //exportnikb1.Add(item);
+                                        ens.Add(new en() { ENId = item.ENId, ENName = item.ENName, ENSize = item.ENSize, ENCount = item.ENCount, ENDate = item.ENDate, ENKMass = Math.Round(item.ENKMass, 1), ENPMass = Math.Round(item.ENPMass, 1), ENKMassBrutto = Math.Round(item.ENKMassBrutto, 1) });
                                     }
                                 }
                                 else
@@ -138,7 +159,8 @@ namespace TDP.pg
                                     var amd = Years.Where(q => q.Number == Year.SelectedIndex).FirstOrDefault();
                                     if (item.ENDate.Year == amd.DisplayName)
                                     {
-                                        exportnikb1.Add(item);
+                                        //exportnikb1.Add(item);
+                                        ens.Add(new en() { ENId = item.ENId, ENName = item.ENName, ENSize = item.ENSize, ENCount = item.ENCount, ENDate = item.ENDate, ENKMass = Math.Round(item.ENKMass, 1), ENPMass = Math.Round(item.ENPMass, 1), ENKMassBrutto = Math.Round(item.ENKMassBrutto, 1) });
                                     }
                                 }
                             }
@@ -149,7 +171,8 @@ namespace TDP.pg
                         {
                             if (item.ENDate > Date1.SelectedDate && item.ENDate < Date2.SelectedDate)
                             {
-                                exportnikb1.Add(item);
+                                //exportnikb1.Add(item); 
+                                ens.Add(new en() { ENId = item.ENId, ENName = item.ENName, ENSize = item.ENSize, ENCount = item.ENCount, ENDate = item.ENDate, ENKMass = Math.Round(item.ENKMass, 1), ENPMass = Math.Round(item.ENPMass, 1), ENKMassBrutto = Math.Round(item.ENKMassBrutto, 1) });
                             }
 
 
@@ -157,9 +180,9 @@ namespace TDP.pg
                         break;
                 }
             }
-            allstring.Content = "Записей: " + exportnikb1.Count.ToString();
+            allstring.Content = "Записей: " + ens.Count.ToString();
 
-            zerg.ItemsSource = exportnikb1;
+            zerg.ItemsSource = ens;
         }
         private void Filter_Changed(object sender, SelectionChangedEventArgs e)
         {
@@ -220,31 +243,129 @@ namespace TDP.pg
                 }
             }
         }
-        public editordel eod;
+        public EditDelWord eod;
+        public error err;
         private void sel(object sender, MouseButtonEventArgs e)
         {
-            eod = new editordel();
-            var selectedDetail = zerg.SelectedItem as ExportNik;
-
-            eod.ShowDialog();
-            switch (eod.stg)
+            var selected = zerg.SelectedItem as en;
+            if (selected != null)
             {
-                case 1:
-                    f4.Visibility = Visibility.Visible;
-                    f4.Navigate(new pg.nexpnik(selectedDetail));
-                    break;
-                case 2:
-                    try
-                    {
-                        conn.GetModel().ExportNik.Remove(selectedDetail);
-                        conn.GetModel().SaveChanges();
-                    }
+                ExportNik selectedDetail = new ExportNik();
+                selectedDetail.ENDate = selected.ENDate;
+                selectedDetail.ENId = selected.ENId;
+                selectedDetail.ENName = selected.ENName;
+                selectedDetail.ENKMass = selected.ENKMass;
+                selectedDetail.ENKMassBrutto = selected.ENKMassBrutto;
+                selectedDetail.ENPMass = selected.ENPMass;
+                selectedDetail.ENSize = selected.ENSize;
+                selectedDetail.ENCount = selected.ENCount;
+                eod = new EditDelWord();
 
-                    catch { conn.DBConnection = null; return; }
-                    break;
+                var amd = conn.GetModel().Detail.Where(q => q.DName == selectedDetail.ENName).FirstOrDefault();
+                eod.ShowDialog();
+                switch (eod.stg)
+                {
+                    case 1:
+                        f4.Visibility = Visibility.Visible;
+                        f4.Navigate(new pg.nexpnik(selectedDetail));
+                        break;
+                    case 2:
+                        try
+                        {
+                            var SK = conn.GetModel().ExportNik.Where(q => q.ENId == selectedDetail.ENId).FirstOrDefault();
+                            if (SK != null)
+                            {
+                                conn.GetModel().ExportNik.Remove(SK);
+                                conn.GetModel().SaveChanges();
+                            }
+                        }
 
+                        catch { conn.DBConnection = null; err = new error(2); err.ShowDialog(); return; }
+                        break;
+                    case 3:
+                        try
+                        {
+                            Word.Application app = new Word.Application();
+                            Word.Document doc = app.Documents.Add();
+                            Word.Paragraph paragraph = doc.Paragraphs.Add();
+                            Word.Range range = paragraph.Range;
+                            Word.Table main = doc.Tables.Add(range, 7, 2);
+                            Word.Range kerrigan;
+                            
+                            kerrigan = main.Cell(1, 1).Range;
+                            kerrigan.Text = "Наименование";
+                            kerrigan = main.Cell(2, 1).Range;
+                            kerrigan.Text = "ДУ";
+                            kerrigan = main.Cell(3, 1).Range;
+                            kerrigan.Text = "Количество коробок, шт";
+                            kerrigan = main.Cell(4, 1).Range;
+                            kerrigan.Text = "Вес поддона, кг";
+                            kerrigan = main.Cell(5, 1).Range;
+                            kerrigan.Text = "Вес гофротары, кг";
+                            kerrigan = main.Cell(6, 1).Range;
+                            kerrigan.Text = "Вес НЕТТО, кг";
+                            kerrigan = main.Cell(7, 1).Range;
+                            kerrigan.Text = "Вес БРУТТО, кг";
+                            kerrigan = main.Cell(1, 2).Range;
+                            kerrigan.Text = amd.DDDName;
+                            kerrigan = main.Cell(2, 2).Range;
+                            kerrigan.Text = amd.DDDSize;
+                            kerrigan = main.Cell(3, 2).Range;
+                            kerrigan.Text = selectedDetail.ENCount.ToString();
+                            kerrigan = main.Cell(4, 2).Range;
+                            kerrigan.Text = selectedDetail.ENPMass.ToString();
+                            kerrigan = main.Cell(5, 2).Range;
+                            kerrigan.Text = selectedDetail.ENKMass.ToString();
+                            kerrigan = main.Cell(6, 2).Range;
+                            kerrigan.Text = (selectedDetail.ENKMassBrutto - selectedDetail.ENPMass - selectedDetail.ENKMass).ToString();
+                            kerrigan = main.Cell(7, 2).Range;
+                            kerrigan.Text = selectedDetail.ENKMassBrutto.ToString();
+                            main.Borders.InsideLineStyle = main.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+                            main.Range.Cells.VerticalAlignment = Word.WdCellVerticalAlignment.wdCellAlignVerticalCenter;
+                            main.Rows[1].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[2].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[3].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[4].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[5].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[6].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[7].Range.ParagraphFormat.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                            main.Rows[1].Range.Font.Size = 16;
+                            main.Rows[2].Range.Font.Size = 16;
+                            main.Rows[3].Range.Font.Size = 16;
+                            main.Rows[4].Range.Font.Size = 16;
+                            main.Rows[5].Range.Font.Size = 16;
+                            main.Rows[6].Range.Font.Size = 16;
+                            main.Rows[7].Range.Font.Size = 16;
+                            main.Columns[1].SetWidth(200, WdRulerStyle.wdAdjustSameWidth);
+                            main.Columns[2].SetWidth(300, WdRulerStyle.wdAdjustSameWidth);
+                            main.Rows.SetHeight(50, WdRowHeightRule.wdRowHeightAuto);
+                            main.Cell(1, 2).Range.Italic = 1;
+                            main.Cell(2, 2).Range.Italic = 1;
+                            main.Cell(3, 2).Range.Italic = 1;
+                            main.Cell(4, 2).Range.Italic = 1;
+                            main.Cell(5, 2).Range.Italic = 1;
+                            main.Cell(6, 2).Range.Italic = 1;
+                            main.Cell(7, 2).Range.Italic = 1;
+                            main.Cell(1, 2).Range.Bold = 1;
+                            main.Cell(2, 2).Range.Bold = 1;
+                            main.Cell(3, 2).Range.Bold = 1;
+                            main.Cell(4, 2).Range.Bold = 1;
+                            main.Cell(5, 2).Range.Bold = 1;
+                            main.Cell(6, 2).Range.Bold = 1;
+                            main.Cell(7, 2).Range.Bold = 1;
+                            
+                            app.Visible = true;
+                            
+                            dynamic dialog = app.Dialogs[WdWordDialog.wdDialogFileSummaryInfo];
+                            dialog.Title = (amd.DDDName + DateTime.Now).ToString();
+                            dialog.Execute();
+                            doc.Save();
+                        }
+                        catch { return; }
+                        break;
+                }
+                updateDetails();
             }
-            updateDetails();
         }
     }
 }

@@ -35,6 +35,7 @@ namespace TDP.pg
             DataContext = detail;
             
             if (detail != null) { Badd.Content = "Изменить"; bgh = detail.FId; CBDN.IsEnabled = false; CBDS.Items.Add(detail); CBDS.DisplayMemberPath = "FSize";CBDS.IsEnabled = false; }
+            
         }
         public int bgh;
         public Database.Forging detail { get; set; }
@@ -59,7 +60,7 @@ namespace TDP.pg
                         MassDet = float.Parse(MassDet1);
                     }
                     catch { LMessage.Content = "Неверный формат ввода"; LMessage.Foreground = new SolidColorBrush(Colors.Red); return; }
-                    SK.FMass = MassDet;
+                    SK.FMass = Math.Round(MassDet,2);
                     SK.FDate = DateDet;
 
                     conn.GetModel().Forging.AddOrUpdate(SK);
@@ -90,7 +91,7 @@ namespace TDP.pg
                 detail.FName = NameDet;
                 detail.FSize = SizeDet;
                 detail.FDate = DateDet;
-                detail.FMass = MassDet;
+                detail.FMass = Math.Round(MassDet,2);
                 conn.GetModel().Forging.Add(detail);
                 conn.GetModel().SaveChanges();
                 LMessage.Content = "Данные сохранены"; LMessage.Foreground = new SolidColorBrush(Colors.White);
